@@ -20,6 +20,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ChoO.ChoO" />
+
+        <activity android:name=".HoatDongGiaiTri.HoatDongGiaiTri" />
+
+        <activity android:name=".VanChuyen.VanChuyen" />
     </application>
 
 </manifest>
