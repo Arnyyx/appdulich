@@ -2,43 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingVertical="10dp">
+    android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="TÌM CHUYẾN ĐI"
-        android:textSize="20dp" />
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp">
-        <TableRow>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Phương tiện: " />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="Phương tiện" />
 
-            <EditText
-                android:id="@+id/phuongTien"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="numberSigned" />
-            <Button
-                android:id="@+id/btnPhuongTien"
-                style="?android:spinnerStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="..." />
-        </TableRow>
         <TableRow>
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -51,7 +27,6 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textCapWords" />
-
         </TableRow>
 
 
@@ -85,15 +60,6 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="numberSigned" />
-
-            <Button
-                android:id="@+id/btnDatePicker"
-                style="?android:spinnerStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="..." />
         </TableRow>
 
         <TableRow>
@@ -117,14 +83,6 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginHorizontal="5dp"
-            android:text="Tìm chuyến đi" />
+            android:text="Chọn" />
     </TableLayout>
-
-    <Button
-        android:id="@+id/btnThemChuyenDi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="5dp"
-        android:text="Thêm chuyến đi" />
-
 </LinearLayout>

@@ -25,6 +25,7 @@
         <activity android:name=".HoatDongGiaiTri.HoatDongGiaiTri" />
 
         <activity android:name=".VanChuyen.VanChuyen" />
+        <activity android:name=".VanChuyen.DanhSachChuyenDi" />
     </application>
 
 </manifest>
