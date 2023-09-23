@@ -47,10 +47,12 @@ public class RoomAdapter extends BaseAdapter {
 
         ImageView roomImage = view.findViewById(R.id.roomImageView);
         TextView roomName = view.findViewById(R.id.roomNameTextView);
+        TextView Description = view.findViewById(R.id.descriptionTextView);
 
         Room room = roomList.get(position);
         roomImage.setImageResource(room.getRoomImageResource());
         roomName.setText(room.getRoomName());
+        Description.setText(room.getDescription());
 
         return view;
     }
