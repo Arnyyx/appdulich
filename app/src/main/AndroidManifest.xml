@@ -21,11 +21,16 @@
             </intent-filter>
         </activity>
         <activity android:name=".ChoO.ChoO" />
+        <activity android:name=".ChoO.DatPhongActivity" />
 
         <activity android:name=".HoatDongGiaiTri.HoatDongGiaiTri" />
 
         <activity android:name=".VanChuyen.VanChuyen" />
         <activity android:name=".VanChuyen.DanhSachChuyenDi" />
+
+        <activity android:name=".ChoO.DeTailChoO" />
+        <activity android:name=".ChoO.LichSuDatPhongActivity" />
+
     </application>
 
 </manifest>
