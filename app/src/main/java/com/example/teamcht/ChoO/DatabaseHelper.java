@@ -50,7 +50,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS Rooms");
         db.execSQL("DROP TABLE IF EXISTS Bookings");
         onCreate(db);    }
-    public void addRoom(room room) {
+    public void addRoom(Room room) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("room_number", room.getRoomNumber());
@@ -64,8 +64,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public ArrayList<room> getAllRooms() {
-        ArrayList<room> roomList = new ArrayList<>();
+    public ArrayList<Room> getAllRooms() {
+        ArrayList<Room> roomList = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT room_number, description, price, image_url FROM Rooms", null);
 
@@ -76,7 +76,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 int imageResourceId = cursor.getInt(cursor.getColumnIndex("image_url"));
                 String roomNumber = cursor.getString(cursor.getColumnIndex("room_number"));
                 //int soluongnguoi = cursor.getInt(cursor.getColumnIndex("soluongnguoi"));
-                room room = new room(description, price, imageResourceId, roomNumber);
+                Room room = new Room(description, price, imageResourceId, roomNumber);
                 roomList.add(room);
             } while (cursor.moveToNext());
         }
@@ -88,16 +88,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public room getRoomByNumber(String roomNumber) {
+    public Room getRoomByNumber(String roomNumber) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM Rooms WHERE room_number = ?", new String[]{roomNumber});
-        room selectedRoom = null;
+        Room selectedRoom = null;
         if (cursor.moveToFirst()) {
             String description = cursor.getString(cursor.getColumnIndex("description"));
             double price = cursor.getDouble(cursor.getColumnIndex("price"));
             int imageResourceId = cursor.getInt(cursor.getColumnIndex("image_url"));
            // int soluongnguoi = cursor.getInt(cursor.getColumnIndex("soluongnguoi"));
-            selectedRoom = new room(description, price, imageResourceId, roomNumber);
+            selectedRoom = new Room(description, price, imageResourceId, roomNumber);
         }
 
         cursor.close();

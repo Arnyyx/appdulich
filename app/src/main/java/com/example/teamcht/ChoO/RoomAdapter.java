@@ -11,14 +11,14 @@ import com.example.teamcht.R;
 
 import java.util.ArrayList;
 
-public class RoomAdapter extends ArrayAdapter<room> {
-    public RoomAdapter(Context context, ArrayList<room> rooms) {
+public class RoomAdapter extends ArrayAdapter<Room> {
+    public RoomAdapter(Context context, ArrayList<Room> rooms) {
         super(context, 0, rooms);
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        room room = getItem(position);
+        Room room = getItem(position);
 
         // Kiểm tra xem convertView (giao diện mục danh sách) có được sử dụng lại không, nếu không, hãy tạo một mới
         if (convertView == null) {

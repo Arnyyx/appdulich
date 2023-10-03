@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class aaadanhsachphong extends AppCompatActivity {
     private ListView danhSachPhongListView;
-    private ArrayList<room> phongList;
+    private ArrayList<Room> phongList;
     private ArrayList<String> phong;
     private DatabaseHelper dbHelper;
 
@@ -40,25 +40,25 @@ public class aaadanhsachphong extends AppCompatActivity {
             if (loaiPhong.equals(selectedLoaiPhong)) {
 
                 if ("Gia đình".equals(loaiPhong)) {
-                    room roomA1 = new room(1, "Gia đình",  "url_a1.jpg",100.0,  R.drawable.anhcuong1,"Phòng 1");
+                    Room roomA1 = new Room(1, "Gia đình",  "url_a1.jpg",100.0,  R.drawable.anhcuong1,"Phòng 1");
                     dbHelper.addRoom(roomA1);
-                    room roomA2 = new room(2, "Gia đình", "url_a2.jpg",900.0,  R.drawable.anhcuong2,"Phòng 2");
+                    Room roomA2 = new Room(2, "Gia đình", "url_a2.jpg",900.0,  R.drawable.anhcuong2,"Phòng 2");
                     dbHelper.addRoom(roomA2);
-                    room roomA3 = new room(3, "Gia đình", "url_a3.jpg",800.0,  R.drawable.anhcuong3,"Phòng 3");
+                    Room roomA3 = new Room(3, "Gia đình", "url_a3.jpg",800.0,  R.drawable.anhcuong3,"Phòng 3");
                     dbHelper.addRoom(roomA3);
                 } else if ("Đơn".equals(loaiPhong)) {
-                    room roomB1 = new room(11, "Đơn", "url_a4.jpg",700.0,  R.drawable.anhcuong4,"Phòng 11");
+                    Room roomB1 = new Room(11, "Đơn", "url_a4.jpg",700.0,  R.drawable.anhcuong4,"Phòng 11");
                     dbHelper.addRoom(roomB1);
-                    room roomB2 = new room(22, "Đơn","url_a5.jpg",600.0,  R.drawable.anhcuong5,"Phòng 22");
+                    Room roomB2 = new Room(22, "Đơn","url_a5.jpg",600.0,  R.drawable.anhcuong5,"Phòng 22");
                     dbHelper.addRoom(roomB2);
                 } else if ("Suite".equals(loaiPhong)) {
-                    room roomC1 = new room(111, "Suite","url_a6.jpg",500.0,  R.drawable.anhcuong6,"Phòng 111");
+                    Room roomC1 = new Room(111, "Suite","url_a6.jpg",500.0,  R.drawable.anhcuong6,"Phòng 111");
                     dbHelper.addRoom(roomC1);
-                    room roomC2 = new room(222, "Suite", "url_a7.jpg",400.0,  R.drawable.anhcuong7,"Phòng 222");
+                    Room roomC2 = new Room(222, "Suite", "url_a7.jpg",400.0,  R.drawable.anhcuong7,"Phòng 222");
                     dbHelper.addRoom(roomC2);
-                    room roomC3 = new room(333, "Suite", "url_a8.jpg",300.0,  R.drawable.anhcuong8,"Phòng 333");
+                    Room roomC3 = new Room(333, "Suite", "url_a8.jpg",300.0,  R.drawable.anhcuong8,"Phòng 333");
                     dbHelper.addRoom(roomC3);
-                    room roomC4 = new room(444, "Suite", "url_a9.jpg",200.0,  R.drawable.anhcuong9,"Phòng 444");
+                    Room roomC4 = new Room(444, "Suite", "url_a9.jpg",200.0,  R.drawable.anhcuong9,"Phòng 444");
                     dbHelper.addRoom(roomC4);
                 }
             }

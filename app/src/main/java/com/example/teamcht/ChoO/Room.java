@@ -1,5 +1,5 @@
 package com.example.teamcht.ChoO;
-public class room {
+public class Room {
     private int id;
     private String RoomType;
     private String description;
@@ -8,7 +8,7 @@ public class room {
     private String roomNumber;
    // private int songuoitrongphong;
 
-    public room(int id, String roomType, String description, double price, int imageUrl, String roomNumber) {
+    public Room(int id, String roomType, String description, double price, int imageUrl, String roomNumber) {
         this.id = id;
         RoomType = roomType;
         this.description = description;
@@ -18,7 +18,7 @@ public class room {
        // this.songuoitrongphong = songuoitrongphong;
     }
 
-    public room(String description, double price, int imageUrl, String roomNumber) {
+    public Room(String description, double price, int imageUrl, String roomNumber) {
         this.description = description;
         this.price = price;
         this.imageUrl = imageUrl;

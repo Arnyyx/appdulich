@@ -28,7 +28,7 @@ public class aaachitietphong extends AppCompatActivity {
         String selectedRoomNumber = getIntent().getStringExtra("selectedPhong");
 
         DatabaseHelper dbHelper = new DatabaseHelper(this);
-        room selectedRoom = dbHelper.getRoomByNumber(selectedRoomNumber);
+        Room selectedRoom = dbHelper.getRoomByNumber(selectedRoomNumber);
 
         ImageView roomImageView = findViewById(R.id.roomImageView);
         TextView roomNameTextView = findViewById(R.id.roomNameTextView);
