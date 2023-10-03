@@ -20,8 +20,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ChoO.ChoO" />
-        <activity android:name=".ChoO.DatPhongActivity" />
+        <activity android:name=".ChoO.loaiphong" />
+        <activity android:name=".ChoO.aaadanhsachphong" />
+        <activity android:name=".ChoO.aaachitietphong" />
+        <activity android:name=".ChoO.BookingActivity" />
+        <activity android:name=".ChoO.lichsudatphong" />
 
         <activity android:name=".HoatDongGiaiTri.HoatDongGiaiTri" />
 
@@ -29,8 +32,6 @@
         <activity android:name=".VanChuyen.Admin.Main" />
         <activity android:name=".VanChuyen.Admin.ThemChuyenDi" />
 
-        <activity android:name=".ChoO.DeTailChoO" />
-        <activity android:name=".ChoO.LichSuDatPhongActivity" />
     </application>
 
 </manifest>

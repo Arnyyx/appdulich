@@ -9,5 +9,7 @@
     <ImageView
         android:src="@drawable/ic_plane"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="Layout van chuyen" />
+
 </LinearLayout>

@@ -1,59 +1,43 @@
 package com.example.teamcht.ChoO;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.teamcht.R;
 
-import java.util.List;
+import java.util.ArrayList;
 
-public class RoomAdapter extends BaseAdapter {
-
-    private Context context;
-    private List<Room> roomList;
-
-    public RoomAdapter(Context context, List<Room> roomList) {
-        this.context = context;
-        this.roomList = roomList;
-    }
-
-    @Override
-    public int getCount() {
-        return roomList.size();
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return roomList.get(position);
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return position;
+public class RoomAdapter extends ArrayAdapter<Room> {
+    public RoomAdapter(Context context, ArrayList<Room> rooms) {
+        super(context, 0, rooms);
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View view = convertView;
-        if (view == null) {
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.customgriddanhsachcuacuong,null);
+        Room room = getItem(position);
+
+        // Kiểm tra xem convertView (giao diện mục danh sách) có được sử dụng lại không, nếu không, hãy tạo một mới
+        if (convertView == null) {
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.customroom, parent, false);
         }
 
-        ImageView roomImage = view.findViewById(R.id.roomImageView);
-        TextView roomName = view.findViewById(R.id.roomNameTextView);
-        TextView Description = view.findViewById(R.id.descriptionTextView);
+        TextView roomNumberTextView = convertView.findViewById(R.id.roomNumberTextView);
+        TextView descriptionTextView = convertView.findViewById(R.id.descriptionTextView);
+        TextView priceTextView = convertView.findViewById(R.id.priceTextView);
+        ImageView imageView = convertView.findViewById(R.id.imageView);
+        //TextView soluongnguoitrongphong = convertView.findViewById(R.id.soluongTextView);
 
-        Room room = roomList.get(position);
-        roomImage.setImageResource(room.getRoomImageResource());
-        roomName.setText(room.getRoomName());
-        Description.setText(room.getDescription());
+        roomNumberTextView.setText(room.getRoomNumber());
+        descriptionTextView.setText("Mô tả:\n"+room.getDescription());
+        priceTextView.setText(String.valueOf(room.getPrice()));
+        imageView.setImageResource(room.getImageUrl());
+        //soluongnguoitrongphong.setText("Phòng "+room.getSonguoitrongphong()+" người");
 
-        return view;
+        return convertView;
     }
 }
+
