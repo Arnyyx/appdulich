@@ -25,12 +25,12 @@
         <activity android:name=".ChoO.aaachitietphong" />
         <activity android:name=".ChoO.BookingActivity" />
         <activity android:name=".ChoO.lichsudatphong" />
-        
+
         <activity android:name=".HoatDongGiaiTri.HoatDongGiaiTri" />
 
         <activity android:name=".VanChuyen.VanChuyen" />
-        <activity android:name=".VanChuyen.DanhSachChuyenDi" />
-
+        <activity android:name=".VanChuyen.Admin.Main" />
+        <activity android:name=".VanChuyen.Admin.ThemChuyenDi" />
 
     </application>
 
