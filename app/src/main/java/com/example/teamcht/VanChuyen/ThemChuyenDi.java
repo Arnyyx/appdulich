@@ -1,4 +1,4 @@
-package com.example.teamcht.VanChuyen.Admin;
+package com.example.teamcht.VanChuyen;
 
 import android.content.Intent;
 import android.os.Bundle;

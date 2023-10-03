@@ -1,10 +1,9 @@
-package com.example.teamcht.VanChuyen.Admin;
+package com.example.teamcht.VanChuyen;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.teamcht.Adapters.ChuyenDiAdapter;
 import com.example.teamcht.Database.SQLiteDB;
 import com.example.teamcht.R;
-import com.example.teamcht.VanChuyen.ChuyenDi;
 
 import java.util.List;
 
