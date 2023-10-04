@@ -41,7 +41,7 @@ public class ChuyenDiAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         // Tạo view mới nếu view hiện tại không tồn tại
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.vanchuyen_admin_itemchuyendi, parent, false);
+            convertView = LayoutInflater.from(context).inflate(R.layout.vanchuyen_itemchuyendi, parent, false);
         }
 
         // Lấy đối tượng ChuyenDi

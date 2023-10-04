@@ -17,7 +17,7 @@ public class ThemChuyenDi extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.vanchuyen_admin_them);
+        setContentView(R.layout.vanchuyen_them);
 
         phuongTien = findViewById(R.id.phuongTien);
         diemKhoiHanh = findViewById(R.id.diemKhoiHanh);
