@@ -51,4 +51,10 @@
         android:layout_height="wrap_content"
         android:text="Số lượng người: 2"
         android:textSize="16sp"/>
+
+    <Button
+        android:id="@+id/huydatphong"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hủy đặt phòng" />
 </LinearLayout>
