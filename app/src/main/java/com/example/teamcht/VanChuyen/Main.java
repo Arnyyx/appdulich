@@ -20,7 +20,7 @@ public class Main extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.vanchuyen_admin_main);
+        setContentView(R.layout.vanchuyen_main);
 
         lvChuyenDi = findViewById(R.id.lvChuyenDi);
 
