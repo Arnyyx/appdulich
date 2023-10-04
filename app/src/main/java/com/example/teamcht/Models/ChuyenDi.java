@@ -1,8 +1,8 @@
-package com.example.teamcht.VanChuyen;
+package com.example.teamcht.Models;
 
 public class ChuyenDi {
     private String phuongTien, DiemKhoiHanh, DiemDen, NgayDi, SoHanhKhach, GiaVe;
-    private Integer id;
+    private long id;
 
     public ChuyenDi(String phuongTien, String diemKhoiHanh, String diemDen, String ngayDi, String soHanhKhach, String giaVe) {
         this.phuongTien = phuongTien;
@@ -16,11 +16,11 @@ public class ChuyenDi {
     public ChuyenDi() {
     }
 
-    public Integer getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(long id) {
         this.id = id;
     }
 

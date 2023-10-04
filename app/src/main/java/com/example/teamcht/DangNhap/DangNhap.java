@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.teamcht.Database.DBTaiKhoan;
 import com.example.teamcht.Main;
+import com.example.teamcht.Models.TaiKhoan;
 import com.example.teamcht.R;
 
 import java.util.ArrayList;
@@ -36,8 +37,10 @@ public class DangNhap extends AppCompatActivity {
             String strPass = pass.getText().toString();
 
             if (strName.matches("")) {
+                name.requestFocus();
                 name.setError("Hãy nhập tên đăng nhập");
             } else if (strPass.matches("")) {
+                pass.requestFocus();
                 pass.setError("Hãy nhập mật khẩu");
             } else {
                 int i = 0;

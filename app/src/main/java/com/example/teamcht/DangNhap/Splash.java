@@ -3,13 +3,13 @@ package com.example.teamcht.DangNhap;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.teamcht.Database.DBTaiKhoan;
 import com.example.teamcht.Main;
+import com.example.teamcht.Models.TaiKhoan;
 import com.example.teamcht.R;
 
 import java.util.ArrayList;

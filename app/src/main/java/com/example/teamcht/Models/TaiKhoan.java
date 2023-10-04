@@ -1,4 +1,4 @@
-package com.example.teamcht.DangNhap;
+package com.example.teamcht.Models;
 
 public class TaiKhoan {
     private long id;

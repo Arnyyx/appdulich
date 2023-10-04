@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.teamcht.DangNhap.TaiKhoan;
+import com.example.teamcht.Models.TaiKhoan;
 
 import java.util.ArrayList;
 import java.util.List;

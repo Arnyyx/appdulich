@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.teamcht.Adapters.TaiKhoanAdapter;
 import com.example.teamcht.Database.DBTaiKhoan;
+import com.example.teamcht.Models.TaiKhoan;
 import com.example.teamcht.R;
 import com.example.teamcht.Utils.RecyclerTouchListener;
 
@@ -93,9 +94,8 @@ public class QLTaiKhoan extends AppCompatActivity {
                         });
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.setCancelable(false);
-        alertDialog.setCanceledOnTouchOutside(false);
+        alertDialog.setCanceledOnTouchOutside(true);
         alertDialog.show();
-
     }
 
     private void showDeleteDialog(TaiKhoan taiKhoan, int position) {
