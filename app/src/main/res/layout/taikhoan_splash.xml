@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/notes"
             android:layout_marginTop="@dimen/margin"
-            android:text="TEAM CHT"
+            android:text="CHT TRAVEL"
             android:textSize="@dimen/title" />
     </LinearLayout>
 

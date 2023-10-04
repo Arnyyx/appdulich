@@ -9,12 +9,11 @@ import android.widget.Toast;
 import com.example.teamcht.ChoO.loaiphong;
 import com.example.teamcht.DangNhap.QLTaiKhoan;
 import com.example.teamcht.DangNhap.Splash;
-import com.example.teamcht.DangNhap.TaiKhoan;
+import com.example.teamcht.Models.TaiKhoan;
 import com.example.teamcht.Database.DBTaiKhoan;
 import com.example.teamcht.HoatDongGiaiTri.HoatDongGiaiTri;
 import com.example.teamcht.VanChuyen.VanChuyen;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Main extends AppCompatActivity {

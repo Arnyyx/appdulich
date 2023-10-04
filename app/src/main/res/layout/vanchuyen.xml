@@ -6,10 +6,14 @@
     android:orientation="vertical"
     android:paddingVertical="10dp">
 
-    <ImageView
-        android:src="@drawable/ic_plane"
+    <Button
+        android:id="@+id/btnQLChuyenDi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Layout van chuyen" />
+        android:text="Quản lý chuyến đi" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mua vé" />
 
 </LinearLayout>

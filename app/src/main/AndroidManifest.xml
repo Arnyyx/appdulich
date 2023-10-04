@@ -29,15 +29,14 @@
         <activity android:name=".HoatDongGiaiTri.HoatDongGiaiTri" />
 
         <activity android:name=".VanChuyen.VanChuyen" />
-        <activity android:name=".VanChuyen.Main" />
-        <activity android:name=".VanChuyen.ThemChuyenDi" />
+        <activity android:name=".VanChuyen.QLChuyenDi" />
 
         <activity android:name=".DangNhap.DangNhap" />
         <activity android:name=".DangNhap.DangKy" />
+        <activity android:name=".DangNhap.QLTaiKhoan" />
 
         <activity android:name=".Main" />
 
-        <activity android:name=".DangNhap.QLTaiKhoan" />
     </application>
 
 </manifest>

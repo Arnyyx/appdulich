@@ -30,8 +30,10 @@ public class DangKy extends AppCompatActivity {
             String strPass = pass.getText().toString();
 
             if (strName.matches("")) {
+                name.requestFocus();
                 name.setError("Hãy nhập tên đăng nhập");
             } else if (strPass.matches("")) {
+                pass.requestFocus();
                 pass.setError("Hãy nhập mật khẩu");
             } else {
                 db.create(strName, strPass, "");

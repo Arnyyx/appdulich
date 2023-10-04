@@ -16,10 +16,8 @@ public class VanChuyen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vanchuyen);
 
-        startActivity(new Intent(this, Main.class));
-        finish();
-
-        //Todo splash screen
-        //Todo Kiểm tra user hay admin
+        findViewById(R.id.btnQLChuyenDi).setOnClickListener(view -> {
+            startActivity(new Intent(this, QLChuyenDi.class));
+        });
     }
 }

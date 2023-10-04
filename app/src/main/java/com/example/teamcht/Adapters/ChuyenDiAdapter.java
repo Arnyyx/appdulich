@@ -4,69 +4,59 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.teamcht.R;
-import com.example.teamcht.VanChuyen.ChuyenDi;
+import com.example.teamcht.Models.ChuyenDi;
 
 import java.util.List;
 
-public class ChuyenDiAdapter extends BaseAdapter {
+public class ChuyenDiAdapter extends RecyclerView.Adapter<ChuyenDiAdapter.MyViewHolder> {
 
     private Context context;
-    private List<ChuyenDi> chuyenDiList;
+    private List<ChuyenDi> listChuyenDi;
 
-    public ChuyenDiAdapter(Context context, List<ChuyenDi> chuyenDiList) {
+    public ChuyenDiAdapter(Context context, List<ChuyenDi> listChuyenDi) {
         this.context = context;
-        this.chuyenDiList = chuyenDiList;
+        this.listChuyenDi = listChuyenDi;
     }
 
     @Override
-    public int getCount() {
-        return chuyenDiList.size();
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.vanchuyen_chuyendi_itemchuyendi, parent, false);
+        return new MyViewHolder(itemView);
     }
 
     @Override
-    public Object getItem(int position) {
-        return chuyenDiList.get(position);
+    public void onBindViewHolder(MyViewHolder holder, int position) {
+        ChuyenDi chuyenDi = listChuyenDi.get(position);
+        holder.tvPhuongTien.setText(String.valueOf(chuyenDi.getId()));
+        holder.tvDiemKhoiHanh.setText(chuyenDi.getDiemKhoiHanh());
+        holder.tvDiemDen.setText(chuyenDi.getDiemDen());
+        holder.tvSoHanhKhach.setText(chuyenDi.getSoHanhKhach());
+        holder.tvNgayDi.setText(chuyenDi.getNgayDi());
+        holder.tvGiaVe.setText(chuyenDi.getGiaVe());
     }
 
     @Override
-    public long getItemId(int position) {
-        return position;
+    public int getItemCount() {
+        return listChuyenDi.size();
     }
 
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        // Tạo view mới nếu view hiện tại không tồn tại
-        if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.vanchuyen_itemchuyendi, parent, false);
+    public class MyViewHolder extends RecyclerView.ViewHolder {
+        public TextView tvPhuongTien, tvDiemKhoiHanh, tvDiemDen, tvSoHanhKhach, tvNgayDi, tvGiaVe;
+
+        public MyViewHolder(View view) {
+            super(view);
+            tvPhuongTien = view.findViewById(R.id.tvPhuongTien);
+            tvDiemKhoiHanh = view.findViewById(R.id.tvDiemKhoiHanh);
+            tvDiemDen = view.findViewById(R.id.tvDiemDen);
+            tvSoHanhKhach = view.findViewById(R.id.tvSoHanhKhach);
+            tvNgayDi = view.findViewById(R.id.tvNgayDi);
+            tvGiaVe = view.findViewById(R.id.tvGiaVe);
         }
-
-        // Lấy đối tượng ChuyenDi
-        ChuyenDi chuyenDi = chuyenDiList.get(position);
-
-        // Đặt giá trị cho các view trong layout
-
-        TextView tvPhuongTien = convertView.findViewById(R.id.tvPhuongTien);
-        tvPhuongTien.setText(chuyenDi.getPhuongTien());
-
-        TextView tvDiemKhoiHanh = convertView.findViewById(R.id.tvDiemKhoiHanh);
-        tvDiemKhoiHanh.setText(chuyenDi.getDiemKhoiHanh());
-
-        TextView tvDiemDen = convertView.findViewById(R.id.tvDiemDen);
-        tvDiemDen.setText(chuyenDi.getDiemDen());
-
-        TextView tvNgayDi = convertView.findViewById(R.id.tvNgayDi);
-        tvNgayDi.setText(chuyenDi.getNgayDi());
-
-        TextView tvSoHanhKhach = convertView.findViewById(R.id.tvSoHanhKhach);
-        tvSoHanhKhach.setText(chuyenDi.getSoHanhKhach());
-
-        TextView tvGiaVe = convertView.findViewById(R.id.tvGiaVe);
-        tvGiaVe.setText(chuyenDi.getGiaVe());
-
-        return convertView;
     }
 }
