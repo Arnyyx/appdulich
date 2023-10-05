@@ -33,7 +33,7 @@ public class ChuyenDiAdapter extends RecyclerView.Adapter<ChuyenDiAdapter.MyView
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         ChuyenDi chuyenDi = listChuyenDi.get(position);
-        holder.tvPhuongTien.setText(String.valueOf(chuyenDi.getId()));
+        holder.tvPhuongTien.setText(chuyenDi.getPhuongTien());
         holder.tvDiemKhoiHanh.setText(chuyenDi.getDiemKhoiHanh());
         holder.tvDiemDen.setText(chuyenDi.getDiemDen());
         holder.tvSoHanhKhach.setText(chuyenDi.getSoHanhKhach());

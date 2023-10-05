@@ -32,17 +32,13 @@ public class QLChuyenDi extends AppCompatActivity {
     List<ChuyenDi> chuyenDiList;
     ChuyenDiAdapter chuyenDiAdapter;
     RecyclerView recyclerView;
-    FloatingActionButton fab;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vanchuyen_chuyendi_qlchuyendi);
 
-
-        fab = findViewById(R.id.btnAdd);
         db = new DBChuyenDi(this);
-        chuyenDiList = new ArrayList<>();
         chuyenDiList = db.getAll();
         chuyenDiAdapter = new ChuyenDiAdapter(this, chuyenDiList);
         recyclerView = findViewById(R.id.recyclerView);
@@ -65,12 +61,40 @@ public class QLChuyenDi extends AppCompatActivity {
             }
         }));
 
-        fab.setOnClickListener(view -> {
+        findViewById(R.id.btnAdd).setOnClickListener(view -> {
             showChuyenDiDialog(null, -1);
         });
 
+        findViewById(R.id.btnBack).setOnClickListener(view -> onBackPressed());
+
+        findViewById(R.id.ic_search).setOnClickListener(view -> {
+            EditText editSearch = findViewById(R.id.editSearch);
+            String strSearch = editSearch.getText().toString();
+            chuyenDiAdapter = new ChuyenDiAdapter(this, search(strSearch, chuyenDiList));
+            recyclerView.setAdapter(chuyenDiAdapter);
+        });
     }
 
+    private List<ChuyenDi> search(String strSearch, List<ChuyenDi> chuyenDiList) {
+        strSearch = strSearch.toLowerCase();
+        if (strSearch.matches("")) {
+            return chuyenDiList;
+        } else {
+            List<ChuyenDi> listResult = new ArrayList<>();
+            for (ChuyenDi chuyenDi : chuyenDiList) {
+                if (chuyenDi.getPhuongTien().toLowerCase().contains(strSearch) ||
+                        chuyenDi.getDiemKhoiHanh().toLowerCase().contains(strSearch) ||
+                        chuyenDi.getDiemDen().toLowerCase().contains(strSearch) ||
+                        chuyenDi.getSoHanhKhach().toLowerCase().contains(strSearch) ||
+                        chuyenDi.getNgayDi().toLowerCase().contains(strSearch) ||
+                        chuyenDi.getGiaVe().toLowerCase().contains(strSearch)) {
+                    listResult.add(chuyenDi);
+                    break;
+                }
+            }
+            return listResult;
+        }
+    }
 
     private void showChuyenDiDialog(ChuyenDi chuyendi, int position) {
         LayoutInflater li = LayoutInflater.from(getApplicationContext());
@@ -102,7 +126,6 @@ public class QLChuyenDi extends AppCompatActivity {
         }
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setView(promptsView);
-
 
         alertDialogBuilder
                 .setCancelable(true)
@@ -174,5 +197,4 @@ public class QLChuyenDi extends AppCompatActivity {
         chuyenDiList.remove(position);
         chuyenDiAdapter.notifyItemRemoved(position);
     }
-
 }

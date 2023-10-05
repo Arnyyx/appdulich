@@ -4,10 +4,40 @@
     android:layout_height="match_parent"
     android:padding="@dimen/padding">
 
+    <LinearLayout
+        android:id="@+id/search_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:src="@drawable/ic_back"
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start" />
+        <EditText
+            android:id="@+id/editSearch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin"
+            android:layout_weight="1"
+            android:background="@color/transparent"
+            android:hint="Tìm chuyến đi"
+            android:imeOptions="actionSearch"
+            android:inputType="textCapWords"
+            android:textSize="@dimen/header" />
+        <ImageView
+            android:src="@drawable/ic_search"
+            android:id="@+id/ic_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
     <TextView
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/search_bar"
+        android:layout_marginTop="@dimen/margin"
         android:gravity="center_horizontal"
         android:text="DANH SÁCH CHUYẾN ĐI"
         android:textSize="@dimen/header" />

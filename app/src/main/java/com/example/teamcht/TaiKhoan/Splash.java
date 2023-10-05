@@ -1,4 +1,4 @@
-package com.example.teamcht.DangNhap;
+package com.example.teamcht.TaiKhoan;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,8 +7,8 @@ import android.os.Handler;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.teamcht.ChoO.loaiphong;
 import com.example.teamcht.Database.DBTaiKhoan;
-import com.example.teamcht.Main;
 import com.example.teamcht.Models.TaiKhoan;
 import com.example.teamcht.R;
 
@@ -29,11 +29,16 @@ public class Splash extends AppCompatActivity {
         taiKhoanList = new ArrayList<>();
         taiKhoanList = db.getAll();
 
+
         new Handler().postDelayed(() -> {
             int i = 0;
+            if (taiKhoanList.size() == 0) {
+                startActivity(new Intent(this, DangNhap.class));
+                finish();
+            }
             for (TaiKhoan a : taiKhoanList) {
                 if (Objects.equals(a.getStatus(), "1")) {
-                    startActivity(new Intent(this, Main.class));
+                    startActivity(new Intent(this, loaiphong.class));
                     finish();
                     break;
                 }

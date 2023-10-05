@@ -59,7 +59,8 @@
                 android:id="@+id/editNgayDi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:enabled="false" />
             <Button
                 android:id="@+id/btnDatePicker"
                 style="?android:spinnerStyle"
@@ -83,7 +84,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Giá vé: " />
+                android:text="Giá vé/người: " />
             <EditText
                 android:id="@+id/editGiaVe"
                 android:layout_width="match_parent"

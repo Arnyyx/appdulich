@@ -1,4 +1,4 @@
-package com.example.teamcht.DangNhap;
+package com.example.teamcht.TaiKhoan;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,8 +8,8 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.teamcht.ChoO.loaiphong;
 import com.example.teamcht.Database.DBTaiKhoan;
-import com.example.teamcht.Main;
 import com.example.teamcht.Models.TaiKhoan;
 import com.example.teamcht.R;
 
@@ -47,7 +47,7 @@ public class DangNhap extends AppCompatActivity {
                 for (TaiKhoan a : taiKhoanList) {
                     if (a.getName().matches(strName) && a.getName().matches(strPass)) {
                         db.update(a.getId(), a.getName(), a.getPassword(), "1");
-                        startActivity(new Intent(this, Main.class));
+                        startActivity(new Intent(this, loaiphong.class));
                         finish();
                         break;
                     }
