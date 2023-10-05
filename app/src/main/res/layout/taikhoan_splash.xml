@@ -9,12 +9,10 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:orientation="vertical">
-
         <ImageView
             android:src="@mipmap/ic_launcher"
             android:layout_width="169dp"
             android:layout_height="169dp" />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

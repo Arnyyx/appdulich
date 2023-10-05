@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/account"
+        android:icon="@drawable/ic_user"
+        android:title="Tài khoản" />
+    <item
+        android:id="@+id/place"
+        android:icon="@drawable/ic_home"
+        android:title="Chỗ ở" />
+
+    <item
+        android:id="@+id/entertainment"
+        android:icon="@drawable/ic_tour"
+        android:title="Giải trí" />
+    <item
+        android:id="@+id/transport"
+        android:icon="@drawable/ic_plane"
+        android:title="Vận chuyển" />
+</menu>

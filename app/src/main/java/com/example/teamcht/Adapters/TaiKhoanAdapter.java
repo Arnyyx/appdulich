@@ -27,6 +27,7 @@ public class TaiKhoanAdapter extends RecyclerView.Adapter<TaiKhoanAdapter.MyView
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.taikhoan_item, parent, false);
         return new MyViewHolder(itemView);
+
     }
 
     @Override
@@ -55,4 +56,5 @@ public class TaiKhoanAdapter extends RecyclerView.Adapter<TaiKhoanAdapter.MyView
         }
 
     }
+
 }
