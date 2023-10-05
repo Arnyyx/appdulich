@@ -45,7 +45,7 @@ public class DangNhap extends AppCompatActivity {
             } else {
                 int i = 0;
                 for (TaiKhoan a : taiKhoanList) {
-                    if (a.getName().matches(strName) && a.getName().matches(strPass)) {
+                    if (a.getName().matches(strName) && a.getPassword().matches(strPass)) {
                         db.update(a.getId(), a.getName(), a.getPassword(), "1");
                         startActivity(new Intent(this, loaiphong.class));
                         finish();

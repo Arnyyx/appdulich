@@ -2,13 +2,20 @@ package com.example.teamcht.TaiKhoan;
 
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -18,6 +25,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.teamcht.Adapters.ChuyenDiAdapter;
 import com.example.teamcht.Adapters.TaiKhoanAdapter;
@@ -41,27 +49,27 @@ public class QLTaiKhoan extends AppCompatActivity {
     List<TaiKhoan> taiKhoanList;
     TaiKhoanAdapter taiKhoanAdapter;
     RecyclerView recyclerView;
+    SwipeRefreshLayout swipeRefreshLayout;
+    EditText editSearch;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.taikhoan_main);
 
+        recyclerView = findViewById(R.id.recyclerView);
+        swipeRefreshLayout = findViewById(R.id.swipeLayout);
+
         db = new DBTaiKhoan(this);
-        taiKhoanList = new ArrayList<>();
         taiKhoanList = db.getAll();
         taiKhoanAdapter = new TaiKhoanAdapter(this, taiKhoanList);
-        recyclerView = findViewById(R.id.recyclerView);
-
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
         recyclerView.setAdapter(taiKhoanAdapter);
 
-
-        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(this,
-                recyclerView, new RecyclerTouchListener.ClickListener() {
+        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(this, recyclerView, new RecyclerTouchListener.ClickListener() {
             @Override
             public void onClick(View view, final int position) {
                 showTaiKhoanDialog(taiKhoanList.get(position), position);
@@ -72,12 +80,34 @@ public class QLTaiKhoan extends AppCompatActivity {
             }
         }));
 
-        findViewById(R.id.ic_search).setOnClickListener(view -> {
-            EditText editSearch = findViewById(R.id.editSearch);
-            String strSearch = editSearch.getText().toString();
-            taiKhoanAdapter = new TaiKhoanAdapter(this, search(strSearch, taiKhoanList));
-            recyclerView.setAdapter(taiKhoanAdapter);
+        editSearch = findViewById(R.id.editSearch);
+        editSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int aft) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String strSearch = editSearch.getText().toString();
+                TaiKhoanAdapter taiKhoanAdapterSearch = new TaiKhoanAdapter(QLTaiKhoan.this, search(strSearch, taiKhoanList));
+                recyclerView.setAdapter(taiKhoanAdapterSearch);
+            }
         });
+        editSearch.setOnEditorActionListener((v, i, event) -> {
+            if (i == EditorInfo.IME_ACTION_SEARCH) {
+                //Hide keyboard
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(editSearch.getWindowToken(), 0);
+                editSearch.clearFocus();
+                return true;
+            }
+            return false;
+        });
+
         findViewById(R.id.btnAdd).setOnClickListener(view -> showTaiKhoanDialog(null, -1));
 
         findViewById(R.id.btnDangXuat).setOnClickListener(view -> new AlertDialog.Builder(this)
@@ -103,6 +133,17 @@ public class QLTaiKhoan extends AppCompatActivity {
                 })
                 .setNegativeButton("Không", null)
                 .show());
+
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            editSearch.setText("");
+            editSearch.clearFocus();
+            //Hide keyboard
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(editSearch.getWindowToken(), 0);
+            recyclerView.setAdapter(taiKhoanAdapter);
+            swipeRefreshLayout.setRefreshing(false);
+        });
+
         navigate();
     }
 
@@ -162,18 +203,18 @@ public class QLTaiKhoan extends AppCompatActivity {
         alertDialogBuilder
                 .setCancelable(true)
                 .setPositiveButton("Lưu",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                if (taiKhoan == null) {
-                                    create(editTaiKhoan.getText().toString(), editMatKhau.getText().toString());
-                                } else {
-                                    update(position, taiKhoan.getId(), editTaiKhoan.getText().toString(), editMatKhau.getText().toString());
-                                }
+                        (dialog, id) -> {
+                            if (taiKhoan == null) {
+                                create(editTaiKhoan.getText().toString(), editMatKhau.getText().toString());
+                            } else {
+                                update(position, taiKhoan.getId(), editTaiKhoan.getText().toString(), editMatKhau.getText().toString(), taiKhoan.getStatus());
                             }
                         })
                 .setNegativeButton("Xoá",
                         (dialog, id) -> {
-                            delete(position, taiKhoan.getId());
+                            if (taiKhoan.getStatus().matches("1")) {
+                                Toast.makeText(this, "Không thể xoá tài khoản đang đăng nhập", Toast.LENGTH_SHORT).show();
+                            } else delete(position, taiKhoan.getId());
                         })
                 .setNeutralButton("Huỷ bỏ",
                         (dialog, id) -> dialog.cancel());
@@ -193,12 +234,13 @@ public class QLTaiKhoan extends AppCompatActivity {
         taiKhoanAdapter.notifyDataSetChanged();
     }
 
-    private void update(int position, long id, String name, String pass) {
-        db.update(id, name, pass, "");
+    private void update(int position, long id, String name, String pass, String status) {
+        db.update(id, name, pass, status);
         TaiKhoan taikhoan = new TaiKhoan();
         taikhoan.setId(id);
         taikhoan.setName(name);
         taikhoan.setPassword(pass);
+        taikhoan.setStatus(status);
         taiKhoanList.set(position, taikhoan);
         taiKhoanAdapter.notifyItemChanged(position);
     }

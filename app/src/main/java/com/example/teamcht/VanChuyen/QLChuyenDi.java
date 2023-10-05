@@ -2,10 +2,15 @@ package com.example.teamcht.VanChuyen;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 import androidx.annotation.Nullable;
@@ -14,6 +19,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.teamcht.Adapters.ChuyenDiAdapter;
 import com.example.teamcht.Database.DBChuyenDi;
@@ -32,6 +38,8 @@ public class QLChuyenDi extends AppCompatActivity {
     List<ChuyenDi> chuyenDiList;
     ChuyenDiAdapter chuyenDiAdapter;
     RecyclerView recyclerView;
+    EditText editSearch;
+    SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,7 +49,9 @@ public class QLChuyenDi extends AppCompatActivity {
         db = new DBChuyenDi(this);
         chuyenDiList = db.getAll();
         chuyenDiAdapter = new ChuyenDiAdapter(this, chuyenDiList);
+
         recyclerView = findViewById(R.id.recyclerView);
+        swipeRefreshLayout = findViewById(R.id.swipeLayout);
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
@@ -49,8 +59,7 @@ public class QLChuyenDi extends AppCompatActivity {
         recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
         recyclerView.setAdapter(chuyenDiAdapter);
 
-        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(this,
-                recyclerView, new RecyclerTouchListener.ClickListener() {
+        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(this, recyclerView, new RecyclerTouchListener.ClickListener() {
             @Override
             public void onClick(View view, final int position) {
                 showChuyenDiDialog(chuyenDiList.get(position), position);
@@ -61,18 +70,51 @@ public class QLChuyenDi extends AppCompatActivity {
             }
         }));
 
-        findViewById(R.id.btnAdd).setOnClickListener(view -> {
-            showChuyenDiDialog(null, -1);
-        });
+        findViewById(R.id.btnAdd).setOnClickListener(view -> showChuyenDiDialog(null, -1));
 
         findViewById(R.id.btnBack).setOnClickListener(view -> onBackPressed());
 
-        findViewById(R.id.ic_search).setOnClickListener(view -> {
-            EditText editSearch = findViewById(R.id.editSearch);
-            String strSearch = editSearch.getText().toString();
-            chuyenDiAdapter = new ChuyenDiAdapter(this, search(strSearch, chuyenDiList));
-            recyclerView.setAdapter(chuyenDiAdapter);
+        editSearch = findViewById(R.id.editSearch);
+        editSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                String strSearch = editSearch.getText().toString();
+                chuyenDiAdapter = new ChuyenDiAdapter(QLChuyenDi.this, search(strSearch, chuyenDiList));
+                recyclerView.setAdapter(chuyenDiAdapter);
+            }
         });
+        editSearch.setOnEditorActionListener((v, i, keyEvent) -> {
+            if (i == EditorInfo.IME_ACTION_SEARCH) {
+                //Hide keyboard
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(editSearch.getWindowToken(), 0);
+                editSearch.clearFocus();
+                return true;
+            }
+            return false;
+        });
+
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            editSearch.setText("");
+            editSearch.clearFocus();
+            //Hide keyboard
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(editSearch.getWindowToken(), 0);
+
+            recyclerView.setAdapter(chuyenDiAdapter);
+            swipeRefreshLayout.setRefreshing(false);
+        });
+
     }
 
     private List<ChuyenDi> search(String strSearch, List<ChuyenDi> chuyenDiList) {

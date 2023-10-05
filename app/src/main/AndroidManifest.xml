@@ -35,5 +35,4 @@
         <activity android:name=".TaiKhoan.DangKy" />
         <activity android:name=".TaiKhoan.QLTaiKhoan" />
     </application>
-
 </manifest>
