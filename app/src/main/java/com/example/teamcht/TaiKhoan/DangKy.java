@@ -9,7 +9,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.teamcht.Database.DBTaiKhoan;
+import com.example.teamcht.Models.TaiKhoan;
 import com.example.teamcht.R;
+
+import java.util.List;
 
 public class DangKy extends AppCompatActivity {
 
@@ -29,17 +32,29 @@ public class DangKy extends AppCompatActivity {
             String strName = name.getText().toString();
             String strPass = pass.getText().toString();
 
-            if (strName.matches("")) {
-                name.requestFocus();
-                name.setError("Hãy nhập tên đăng nhập");
-            } else if (strPass.matches("")) {
-                pass.requestFocus();
-                pass.setError("Hãy nhập mật khẩu");
-            } else {
-                db.create(strName, strPass, "");
-                Toast.makeText(this, "Đăng ký tài khoản thành công", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(this, DangNhap.class));
-                finish();
+            List<TaiKhoan> taiKhoanList = db.getAll();
+            int i = 0;
+            for (TaiKhoan a : taiKhoanList) {
+                if (a.getName().matches(strName)) {
+                    name.requestFocus();
+                    name.setError("Tài khoản đã tồn tại");
+                    break;
+                }
+                i++;
+            }
+            if (i == taiKhoanList.size()) {
+                if (strName.matches("")) {
+                    name.requestFocus();
+                    name.setError("Hãy nhập tên tài khoản");
+                } else if (strPass.matches("")) {
+                    pass.requestFocus();
+                    pass.setError("Hãy nhập mật khẩu");
+                } else {
+                    db.create(strName, strPass, "");
+                    Toast.makeText(this, "Đăng ký tài khoản thành công", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(this, DangNhap.class));
+                    finish();
+                }
             }
         });
 

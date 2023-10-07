@@ -21,6 +21,7 @@ public class VanChuyen extends AppCompatActivity {
         setContentView(R.layout.vanchuyen);
 
         findViewById(R.id.btnQLChuyenDi).setOnClickListener(view -> startActivity(new Intent(this, QLChuyenDi.class)));
+        findViewById(R.id.btnMuaVe).setOnClickListener(view -> startActivity(new Intent(this, MuaVe.class)));
         navigate();
     }
 
@@ -30,15 +31,15 @@ public class VanChuyen extends AppCompatActivity {
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
             if (itemId == R.id.account) {
-                startActivity(new Intent(getApplicationContext(), QLTaiKhoan.class));
+                startActivity(new Intent(this, QLTaiKhoan.class));
                 overridePendingTransition(0, 0);
                 return true;
             } else if (itemId == R.id.place) {
-                startActivity(new Intent(getApplicationContext(), loaiphong.class));
+                startActivity(new Intent(this, loaiphong.class));
                 overridePendingTransition(0, 0);
                 return true;
             } else if (itemId == R.id.entertainment) {
-                startActivity(new Intent(getApplicationContext(), HoatDongGiaiTri.class));
+                startActivity(new Intent(this, HoatDongGiaiTri.class));
                 overridePendingTransition(0, 0);
                 return true;
             } else if (itemId == R.id.transport) {

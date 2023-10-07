@@ -21,8 +21,9 @@
             android:layout_marginHorizontal="@dimen/margin"
             android:layout_weight="1"
             android:background="@color/transparent"
+            android:focusable="false"
             android:gravity="center"
-            android:hint="Tìm chuyến đi"
+            android:hint="Tìm vé"
             android:imeOptions="actionSearch"
             android:inputType="textCapWords"
             android:textSize="@dimen/header" />
@@ -40,7 +41,7 @@
         android:layout_below="@+id/search_bar"
         android:layout_marginTop="@dimen/margin"
         android:gravity="center_horizontal"
-        android:text="DANH SÁCH CHUYẾN ĐI"
+        android:text="DANH SÁCH VÉ"
         android:textSize="@dimen/header" />
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -54,16 +55,4 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:src="@drawable/ic_add"
-        android:id="@+id/btnAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="@dimen/padding"
-        android:layout_marginBottom="@dimen/padding" />
-
 </RelativeLayout>

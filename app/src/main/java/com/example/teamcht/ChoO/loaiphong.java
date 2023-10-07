@@ -57,17 +57,17 @@ public class loaiphong extends AppCompatActivity {
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
             if (itemId == R.id.account) {
-                startActivity(new Intent(getApplicationContext(), QLTaiKhoan.class));
+                startActivity(new Intent(this, QLTaiKhoan.class));
                 overridePendingTransition(0, 0);
                 return true;
             } else if (itemId == R.id.place) {
                 return true;
             } else if (itemId == R.id.entertainment) {
-                startActivity(new Intent(getApplicationContext(), HoatDongGiaiTri.class));
+                startActivity(new Intent(this, HoatDongGiaiTri.class));
                 overridePendingTransition(0, 0);
                 return true;
             } else if (itemId == R.id.transport) {
-                startActivity(new Intent(getApplicationContext(), VanChuyen.class));
+                startActivity(new Intent(this, VanChuyen.class));
                 overridePendingTransition(0, 0);
                 return true;
             }

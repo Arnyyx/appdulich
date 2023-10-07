@@ -15,6 +15,6 @@
         android:title="Giải trí" />
     <item
         android:id="@+id/transport"
-        android:icon="@drawable/ic_plane"
+        android:icon="@drawable/ic_plane_ticket"
         android:title="Vận chuyển" />
 </menu>

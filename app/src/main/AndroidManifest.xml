@@ -30,10 +30,10 @@
 
         <activity android:name=".VanChuyen.VanChuyen" />
         <activity android:name=".VanChuyen.QLChuyenDi" />
+        <activity android:name=".VanChuyen.MuaVe" />
 
         <activity android:name=".TaiKhoan.DangNhap" />
         <activity android:name=".TaiKhoan.DangKy" />
         <activity android:name=".TaiKhoan.QLTaiKhoan" />
     </application>
-
 </manifest>

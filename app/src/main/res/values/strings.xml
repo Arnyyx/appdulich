@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">TeamCHT</string>
+
+    <string name="TaiKhoanExists">Tài khoản đã tồn tại</string>
+    <string name="TaiKhoanNull">Hãy nhập tên tài khoản</string>
+    <string name="MatKhauNull">Hãy nhập mật khẩu</string>
 </resources>

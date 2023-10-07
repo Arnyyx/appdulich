@@ -10,16 +10,16 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal">
         <ImageView
-            android:src="@drawable/ic_plane_ticket"
-            android:layout_marginHorizontal="@dimen/itemMargin"
+            android:src="@drawable/ic_search"
             android:layout_width="wrap_content"
+            android:layout_marginHorizontal="@dimen/itemMargin"
             android:layout_height="wrap_content" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
             android:layout_marginHorizontal="@dimen/itemMargin"
-            android:text="Thông tin chuyến đi"
+            android:layout_gravity="center_horizontal"
+            android:text="Tìm mua vé"
             android:textSize="@dimen/header" />
     </LinearLayout>
 
@@ -31,8 +31,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Phương tiện: " />
-            <EditText
-                android:id="@+id/editPhuongTien"
+            <com.example.teamcht.Utils.InstantAutoComplete
+                android:id="@+id/acPhuongTien"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -43,8 +43,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Điểm khởi hành: " />
-            <EditText
-                android:id="@+id/editDiemKhoiHanh"
+            <com.example.teamcht.Utils.InstantAutoComplete
+                android:id="@+id/acDiemKhoiHanh"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -55,8 +55,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Điểm đến: " />
-            <EditText
-                android:id="@+id/editDiemDen"
+            <com.example.teamcht.Utils.InstantAutoComplete
+                android:id="@+id/acDiemDen"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -86,8 +86,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Số hành khách: " />
-            <EditText
-                android:id="@+id/editSoHanhKhach"
+            <com.example.teamcht.Utils.InstantAutoComplete
+                android:id="@+id/acSoHanhKhach"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -98,8 +98,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Giá vé/người: " />
-            <EditText
-                android:id="@+id/editGiaVe"
+            <com.example.teamcht.Utils.InstantAutoComplete
+                android:id="@+id/acGiaVe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
