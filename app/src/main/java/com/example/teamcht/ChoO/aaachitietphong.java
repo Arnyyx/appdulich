@@ -31,7 +31,9 @@ public class aaachitietphong extends AppCompatActivity {
         TextView roomDescriptionTextView = findViewById(R.id.roomDescriptionTextView);
         TextView roomPriceTextView = findViewById(R.id.roomPriceTextView);
         TextView soluongnguoi = findViewById(R.id.soluongnguoitv);
+
         TextView diadiem = findViewById(R.id.diadiemtv);
+
 
         roomImageView.setImageResource(selectedRoom.getImageUrl());
         roomNameTextView.setText(selectedRoomNumber);
@@ -40,6 +42,7 @@ public class aaachitietphong extends AppCompatActivity {
         roomPriceTextView.setText("Giá: $" + selectedRoom.getPrice() + "/đêm");
         soluongnguoi.setText( selectedRoom.getSonguoitrongphong()+ " người/phòng");
         diadiem.setText( "Địa điểm: "+selectedRoom.getDiadiem());
+
         double price=selectedRoom.getPrice();
         Button bookNowButton = findViewById(R.id.bookNowButton);
 

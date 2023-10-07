@@ -21,6 +21,7 @@ public class lichsudatphong extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lichsudatphong);
         dslv = findViewById(R.id.danhsachphongdadat);
+
         bookingList = new ArrayList<>();
         DBHPbooking dbHelper = new DBHPbooking(lichsudatphong.this);
         ArrayList<Booking> bookings = dbHelper.getAllBookings();

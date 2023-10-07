@@ -1,6 +1,7 @@
 package com.example.teamcht.ChoO;
 public class Booking {
     private long id;
+
     private String name;
     private String checkInDate;
     private String checkOutDate;
@@ -27,6 +28,9 @@ public class Booking {
     }
 
     public long getId() {
+        return id;
+    }
+    public int getId() {
         return id;
     }
 
@@ -94,4 +98,5 @@ public class Booking {
     public void setPriceall(String priceall) {
         this.priceall = priceall;
     }
+
 }

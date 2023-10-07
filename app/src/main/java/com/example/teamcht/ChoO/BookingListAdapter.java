@@ -22,6 +22,7 @@ public class BookingListAdapter extends BaseAdapter {
     private DBHPbooking databaseHelper;
 
     public BookingListAdapter(Context context, ArrayList<Booking> bookingList, DBHPbooking databaseHelper) {
+
         this.context = context;
         this.bookingList = bookingList;
         this.databaseHelper = databaseHelper;
@@ -120,14 +121,19 @@ public class BookingListAdapter extends BaseAdapter {
         });
 
 
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int bookingId = booking.getId();
+                removeBooking(bookingId);
+            }
+        });
+
         return convertView;
     }
+
     public void updateBookingList(ArrayList<Booking> newBookingList) {
         this.bookingList = newBookingList;
         notifyDataSetChanged();
     }
-
-
-
-
 }

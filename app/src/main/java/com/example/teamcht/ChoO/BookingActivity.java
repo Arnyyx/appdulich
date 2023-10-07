@@ -67,6 +67,7 @@ public class BookingActivity extends AppCompatActivity {
         int month = calendar.get(Calendar.MONTH);
         int day = calendar.get(Calendar.DAY_OF_MONTH);
         String currentDate = day + "/" + (month + 1) + "/" + year;
+
         editTextBookingDate.setText(" "+currentDate);
         TextView priceTextView = findViewById(R.id.priceTextView);
         double giaBanDau = priceall;
@@ -88,8 +89,10 @@ public class BookingActivity extends AppCompatActivity {
             public void onClick(View view) {
                 showDatePickerDialog1(editTextCheckOutDate);
 
+
             }
         });
+
 
 
 
@@ -103,6 +106,7 @@ public class BookingActivity extends AppCompatActivity {
             soluong = Integer.parseInt(editTextNumberOfGuests.getText().toString());
 
         }
+
 
         editTextNumberOfGuests.addTextChangedListener(new TextWatcher() {
             @Override
@@ -118,6 +122,7 @@ public class BookingActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
+
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
                 Date checkInDate = null;
                 Date checkOutDate = null;
@@ -163,9 +168,12 @@ public class BookingActivity extends AppCompatActivity {
                         }
                         priceTextView.setText("Tổng tiền cần trả: $" + giaTong);
                     }
+
+             
                 }
             }
         });
+
 
 
         buttonSubmit.setOnClickListener(new View.OnClickListener() {
@@ -213,10 +221,12 @@ public class BookingActivity extends AppCompatActivity {
                         Toast.makeText(BookingActivity.this, "Thêm đặt phòng thất bại.", Toast.LENGTH_SHORT).show();
                     }
                 }
+
             }
         });
 
     }
+
 
 
 
@@ -240,6 +250,7 @@ public class BookingActivity extends AppCompatActivity {
 
 
 
+
     private void showDatePickerDialog(final TextView editText) {
         final Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
@@ -251,6 +262,7 @@ public class BookingActivity extends AppCompatActivity {
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                         String selectedDate = dayOfMonth + "/" + (month + 1) + "/" + year;
                         editText.setText(""+selectedDate);
+
                     }
                 }, year, month, day);
 

@@ -10,6 +10,7 @@ public class room {
     private String diadiem;
 
     public room(int id, String roomType, String description, double price, int imageUrl, String roomNumber,int songuoitrongphong,String diadiem) {
+
         this.id = id;
         RoomType = roomType;
         this.description = description;
@@ -21,12 +22,15 @@ public class room {
     }
 
     public room(String description, double price, int imageUrl, String roomNumber,int songuoitrongphong,String diadiem) {
+
         this.description = description;
         this.price = price;
         this.imageUrl = imageUrl;
         this.roomNumber = roomNumber;
+
         this.songuoitrongphong = songuoitrongphong;
         this.diadiem=diadiem;
+
 
     }
 
@@ -93,5 +97,4 @@ public class room {
     public int getSonguoitrongphong() {
         return songuoitrongphong;
     }
-
 }

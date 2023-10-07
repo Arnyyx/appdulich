@@ -30,7 +30,9 @@ public class RoomAdapter extends ArrayAdapter<room> {
         TextView priceTextView = convertView.findViewById(R.id.priceTextView);
         ImageView imageView = convertView.findViewById(R.id.imageView);
         TextView soluongnguoitrongphong = convertView.findViewById(R.id.soluongTextView);
+
         TextView diadiem = convertView.findViewById(R.id.diadiemTextView);
+
 
         roomNumberTextView.setText(room.getRoomNumber());
         descriptionTextView.setText("Mô tả:\n" + room.getDescription());
@@ -38,6 +40,7 @@ public class RoomAdapter extends ArrayAdapter<room> {
         imageView.setImageResource(room.getImageUrl());
         soluongnguoitrongphong.setText("Phòng " + room.getSonguoitrongphong() + " người");
         diadiem.setText("Địa điểm: " + room.getDiadiem());
+
 
         return convertView;
     }

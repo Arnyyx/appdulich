@@ -20,10 +20,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "description TEXT," +
             "price REAL," +
             "image_url TEXT," +
+
             "room_type TEXT," +
             "soluongnguoi INTEGER," +
             "dia_diem TEXT);";
-
 //tạo bảng booking
 
     private static final String CREATE_BOOKINGS_TABLE = "CREATE TABLE Bookings (" +
@@ -60,10 +60,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put("image_url", room.getImageUrl());
         values.put("room_type", room.getRoomType());
         values.put("soluongnguoi", room.getSonguoitrongphong());
+
         values.put("dia_diem", room.getDiadiem());
+
         db.insert("Rooms", null, values);
         db.close();
     }
+
 
 
     public ArrayList<room> getAllRooms(String roomtype) {
@@ -79,8 +82,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 int imageUrl = cursor.getInt(cursor.getColumnIndex("image_url"));
                 String roomNumber = cursor.getString(cursor.getColumnIndex("room_number"));
                 int soluongnguoi = cursor.getInt(cursor.getColumnIndex("soluongnguoi"));
+
                 String diadiem=cursor.getString (cursor.getColumnIndex("dia_diem"));
                 room room = new room(description, price, imageUrl, roomNumber, soluongnguoi,diadiem);
+
                 roomList.add(room);
             } while (cursor.moveToNext());
         }
@@ -90,6 +95,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return roomList;
     }
+
+
 
 
 
@@ -105,6 +112,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             String diadiem=cursor.getString (cursor.getColumnIndex("dia_diem"));
 
             selectedRoom = new room(description, price, imageResourceId, roomNumber,soluongnguoi,diadiem);
+
         }
 
         cursor.close();
@@ -161,6 +169,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 String id = cursor.getString(cursor.getColumnIndex("id"));
+
 
                 String customerName = cursor.getString(cursor.getColumnIndex("customer_name"));
                 String bookingDate = cursor.getString(cursor.getColumnIndex("booking_date"));
