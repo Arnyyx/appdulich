@@ -64,13 +64,13 @@ public class BookingListAdapter extends BaseAdapter {
 
         id.setText("Mã đặt phòng: " + booking.getId());
         textViewName.setText("Tên: " + booking.getName());
-        textViewbookingdate.setText( booking.getBookingDate());
+        textViewbookingdate.setText(booking.getBookingDate());
         textViewCheckInDate.setText(booking.getCheckInDate());
         textViewCheckOutDate.setText(booking.getCheckOutDate());
         textViewRoomType.setText("Loại phòng: " + booking.getRoomType());
         textViewRoomNumber.setText("Số phòng: " + booking.getRoomNumber());
         textViewsoluong.setText("Số lượng người: " + booking.getsoluong());
-        price.setText(booking.getPriceall() );
+        price.setText(booking.getPriceall());
 
 
         Button buttonDelete = convertView.findViewById(R.id.huydatphong);
@@ -86,7 +86,7 @@ public class BookingListAdapter extends BaseAdapter {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         long bookingId = booking.getId();
-                        Toast.makeText(context, ""+bookingId, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "" + bookingId, Toast.LENGTH_SHORT).show();
                         boolean isDeleted = databaseHelper.xoaphong(bookingId);
 
                         if (isDeleted) {
@@ -110,25 +110,15 @@ public class BookingListAdapter extends BaseAdapter {
                 dialog.show();
             }
         });
-        Button sua= convertView.findViewById(R.id.suathongtinbooking);
+        Button sua = convertView.findViewById(R.id.suathongtinbooking);
         sua.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                customalert a= new customalert(context, databaseHelper,booking,BookingListAdapter.this);
+                customalert a = new customalert(context, databaseHelper, booking, BookingListAdapter.this);
 
                 a.show();
             }
         });
-
-
-        buttonDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int bookingId = booking.getId();
-                removeBooking(bookingId);
-            }
-        });
-
         return convertView;
     }
 
