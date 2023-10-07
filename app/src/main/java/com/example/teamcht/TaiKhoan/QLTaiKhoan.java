@@ -23,6 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.teamcht.Adapters.TaiKhoanAdapter;
+import com.example.teamcht.ChoO.ChoO;
 import com.example.teamcht.ChoO.loaiphong;
 import com.example.teamcht.Database.DBTaiKhoan;
 import com.example.teamcht.HoatDongGiaiTri.HoatDongGiaiTri;
@@ -153,16 +154,19 @@ public class QLTaiKhoan extends AppCompatActivity {
             if (itemId == R.id.account) {
                 return true;
             } else if (itemId == R.id.place) {
-                startActivity(new Intent(this, loaiphong.class));
+                startActivity(new Intent(this, ChoO.class));
                 overridePendingTransition(0, 0);
+                finish();
                 return true;
             } else if (itemId == R.id.entertainment) {
                 startActivity(new Intent(this, HoatDongGiaiTri.class));
                 overridePendingTransition(0, 0);
+                finish();
                 return true;
             } else if (itemId == R.id.transport) {
                 startActivity(new Intent(this, VanChuyen.class));
                 overridePendingTransition(0, 0);
+                finish();
                 return true;
             }
             return false;

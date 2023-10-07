@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.teamcht.ChoO.ChoO;
 import com.example.teamcht.ChoO.loaiphong;
 import com.example.teamcht.HoatDongGiaiTri.HoatDongGiaiTri;
 import com.example.teamcht.R;
@@ -33,14 +34,17 @@ public class VanChuyen extends AppCompatActivity {
             if (itemId == R.id.account) {
                 startActivity(new Intent(this, QLTaiKhoan.class));
                 overridePendingTransition(0, 0);
+                finish();
                 return true;
             } else if (itemId == R.id.place) {
-                startActivity(new Intent(this, loaiphong.class));
+                startActivity(new Intent(this, ChoO.class));
                 overridePendingTransition(0, 0);
+                finish();
                 return true;
             } else if (itemId == R.id.entertainment) {
                 startActivity(new Intent(this, HoatDongGiaiTri.class));
                 overridePendingTransition(0, 0);
+                finish();
                 return true;
             } else if (itemId == R.id.transport) {
                 return true;

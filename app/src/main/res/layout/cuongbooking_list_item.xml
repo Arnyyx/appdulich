@@ -5,13 +5,18 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="16dp">
-
+    <TextView
+        android:id="@+id/textViewidBooking"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mã đặt phòng: 1"
+        android:textSize="16sp" />
     <TextView
         android:id="@+id/textViewName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tên: John Doe"
-        android:textSize="16sp"/>
+        android:textSize="16sp" />
     <TextView
         android:id="@+id/textViewbookingdate"
         android:layout_width="wrap_content"
@@ -51,4 +56,30 @@
         android:layout_height="wrap_content"
         android:text="Số lượng người: 2"
         android:textSize="16sp"/>
+    <TextView
+        android:id="@+id/priceTextView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Số lượng người: 2"
+        android:textSize="16sp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/huydatphong"
+            android:layout_width="193dp"
+            android:layout_height="wrap_content"
+            android:text="Hủy đặt phòng" />
+
+        <Button
+            android:id="@+id/suathongtinbooking"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Sửa thông tin" />
+    </LinearLayout>
+
 </LinearLayout>

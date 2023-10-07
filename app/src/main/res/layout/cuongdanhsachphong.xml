@@ -9,10 +9,29 @@
     android:layout_margin="0dp"
     android:padding="0dp">
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:text="Danh sách phòng"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/searchdiadiemEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Nhập địa điểm muốn đến"
+        android:inputType="text" />
     <ListView
         android:id="@+id/danhSachPhongListView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="0dp"
-        android:padding="0dp"/>
+        android:padding="0dp">
+
+
+    </ListView>
 </LinearLayout>
