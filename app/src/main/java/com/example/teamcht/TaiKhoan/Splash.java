@@ -7,6 +7,7 @@ import android.os.Handler;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.teamcht.ChoO.ChoO;
 import com.example.teamcht.ChoO.loaiphong;
 import com.example.teamcht.Database.DBTaiKhoan;
 import com.example.teamcht.Models.TaiKhoan;
@@ -38,7 +39,7 @@ public class Splash extends AppCompatActivity {
             }
             for (TaiKhoan a : taiKhoanList) {
                 if (Objects.equals(a.getStatus(), "1")) {
-                    startActivity(new Intent(this, loaiphong.class));
+                    startActivity(new Intent(this, ChoO.class));
                     finish();
                     break;
                 }

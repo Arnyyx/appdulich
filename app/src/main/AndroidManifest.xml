@@ -20,6 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ChoO.ChoO" />
         <activity android:name=".ChoO.loaiphong" />
         <activity android:name=".ChoO.aaadanhsachphong" />
         <activity android:name=".ChoO.aaachitietphong" />

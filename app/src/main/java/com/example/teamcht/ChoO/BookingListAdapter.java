@@ -1,14 +1,15 @@
 package com.example.teamcht.ChoO;
 
+import android.app.AlertDialog;
 import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.teamcht.R;
 
@@ -18,9 +19,10 @@ public class BookingListAdapter extends BaseAdapter {
 
     private Context context;
     private ArrayList<Booking> bookingList;
-    private DatabaseHelper databaseHelper;
+    private DBHPbooking databaseHelper;
 
-    public BookingListAdapter(Context context, ArrayList<Booking> bookingList, DatabaseHelper databaseHelper) {
+    public BookingListAdapter(Context context, ArrayList<Booking> bookingList, DBHPbooking databaseHelper) {
+
         this.context = context;
         this.bookingList = bookingList;
         this.databaseHelper = databaseHelper;
@@ -57,18 +59,67 @@ public class BookingListAdapter extends BaseAdapter {
         TextView textViewRoomType = convertView.findViewById(R.id.textViewRoomType);
         TextView textViewRoomNumber = convertView.findViewById(R.id.textViewRoomNumber);
         TextView textViewsoluong = convertView.findViewById(R.id.textViewNumberOfGuests);
-        TextView price = convertView.findViewById(R.id.priceTextView);
+        TextView price = convertView.findViewById(R.id.priceTextView1);
+        TextView id = convertView.findViewById(R.id.textViewidBooking);
 
+        id.setText("Mã đặt phòng: " + booking.getId());
         textViewName.setText("Tên: " + booking.getName());
-        textViewbookingdate.setText("Ngày đặt: " + booking.getBookingDate());
-        textViewCheckInDate.setText("Ngày đến: " + booking.getCheckInDate());
-        textViewCheckOutDate.setText("Ngày đi: " + booking.getCheckOutDate());
+        textViewbookingdate.setText( booking.getBookingDate());
+        textViewCheckInDate.setText(booking.getCheckInDate());
+        textViewCheckOutDate.setText(booking.getCheckOutDate());
         textViewRoomType.setText("Loại phòng: " + booking.getRoomType());
         textViewRoomNumber.setText("Số phòng: " + booking.getRoomNumber());
         textViewsoluong.setText("Số lượng người: " + booking.getsoluong());
-        price.setText(booking.getPriceall() + "/Đêm");
+        price.setText(booking.getPriceall() );
+
 
         Button buttonDelete = convertView.findViewById(R.id.huydatphong);
+
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle("Xác nhận xóa");
+                builder.setMessage("Bạn có chắc chắn muốn xóa bản ghi này?");
+
+                builder.setPositiveButton("Xóa", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        long bookingId = booking.getId();
+                        Toast.makeText(context, ""+bookingId, Toast.LENGTH_SHORT).show();
+                        boolean isDeleted = databaseHelper.xoaphong(bookingId);
+
+                        if (isDeleted) {
+                            bookingList.remove(booking);
+                            notifyDataSetChanged();
+                            Toast.makeText(context, "Xóa thành công!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(context, "Xóa không thành công.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+                builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+        Button sua= convertView.findViewById(R.id.suathongtinbooking);
+        sua.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                customalert a= new customalert(context, databaseHelper,booking,BookingListAdapter.this);
+
+                a.show();
+            }
+        });
+
 
         buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,18 +132,8 @@ public class BookingListAdapter extends BaseAdapter {
         return convertView;
     }
 
-    public void removeBooking(int bookingId) {
-        for (int i = 0; i < bookingList.size(); i++) {
-            Booking booking = bookingList.get(i);
-            if (booking.getId() == bookingId) {
-                bookingList.remove(i);
-                notifyDataSetChanged();
-                break;
-            }
-        }
-
-        databaseHelper.deleteBookingFromDatabase(bookingId);
+    public void updateBookingList(ArrayList<Booking> newBookingList) {
+        this.bookingList = newBookingList;
+        notifyDataSetChanged();
     }
-
-
 }

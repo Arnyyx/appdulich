@@ -1,21 +1,17 @@
 package com.example.teamcht.ChoO;
 
-import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.EditText;
+
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.teamcht.R;
 
-import java.util.Calendar;
 
 public class aaachitietphong extends AppCompatActivity {
 
@@ -25,8 +21,7 @@ public class aaachitietphong extends AppCompatActivity {
         setContentView(R.layout.cuongbooking);
         Intent intent = getIntent();
         String selectedLoaiPhong = intent.getStringExtra("selectedLoaiPhong");
-        String selectedRoomNumber = getIntent().getStringExtra("selectedPhong");
-
+        String selectedRoomNumber = intent.getStringExtra("selectedPhong");
         DatabaseHelper dbHelper = new DatabaseHelper(this);
         room selectedRoom = dbHelper.getRoomByNumber(selectedRoomNumber);
 
@@ -37,12 +32,17 @@ public class aaachitietphong extends AppCompatActivity {
         TextView roomPriceTextView = findViewById(R.id.roomPriceTextView);
         TextView soluongnguoi = findViewById(R.id.soluongnguoitv);
 
+        TextView diadiem = findViewById(R.id.diadiemtv);
+
+
         roomImageView.setImageResource(selectedRoom.getImageUrl());
-        roomNameTextView.setText(selectedRoom.getRoomNumber());
+        roomNameTextView.setText(selectedRoomNumber);
         roomTypeTextView.setText(selectedLoaiPhong);
         roomDescriptionTextView.setText(selectedRoom.getDescription());
         roomPriceTextView.setText("Giá: $" + selectedRoom.getPrice() + "/đêm");
         soluongnguoi.setText( selectedRoom.getSonguoitrongphong()+ " người/phòng");
+        diadiem.setText( "Địa điểm: "+selectedRoom.getDiadiem());
+
         double price=selectedRoom.getPrice();
         Button bookNowButton = findViewById(R.id.bookNowButton);
 
@@ -56,7 +56,7 @@ public class aaachitietphong extends AppCompatActivity {
                 intent.putExtra("soluongnguoi", selectedRoom.getSonguoitrongphong());
                 startActivity(intent);
 
-        }
+            }
         });
     }
 
