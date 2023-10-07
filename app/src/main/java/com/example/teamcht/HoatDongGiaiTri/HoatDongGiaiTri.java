@@ -28,17 +28,17 @@ public class HoatDongGiaiTri extends AppCompatActivity {
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
             if (itemId == R.id.account) {
-                startActivity(new Intent(getApplicationContext(), QLTaiKhoan.class));
+                startActivity(new Intent(this, QLTaiKhoan.class));
                 overridePendingTransition(0, 0);
                 return true;
             } else if (itemId == R.id.place) {
-                startActivity(new Intent(getApplicationContext(), loaiphong.class));
+                startActivity(new Intent(this, loaiphong.class));
                 overridePendingTransition(0, 0);
                 return true;
             } else if (itemId == R.id.entertainment) {
                 return true;
             } else if (itemId == R.id.transport) {
-                startActivity(new Intent(getApplicationContext(), VanChuyen.class));
+                startActivity(new Intent(this, VanChuyen.class));
                 overridePendingTransition(0, 0);
                 return true;
             }

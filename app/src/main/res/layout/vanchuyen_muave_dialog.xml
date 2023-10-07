@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -9,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Thông tin chuyến đi"
+        android:text="Tìm mua vé"
         android:textSize="@dimen/header" />
     <TableLayout
         android:layout_width="match_parent"
@@ -19,8 +20,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Phương tiện: " />
-            <EditText
-                android:id="@+id/editPhuongTien"
+            <com.example.teamcht.Utils.InstantAutoComplete
+                android:id="@+id/acPhuongTien"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -31,8 +32,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Điểm khởi hành: " />
-            <EditText
-                android:id="@+id/editDiemKhoiHanh"
+            <com.example.teamcht.Utils.InstantAutoComplete
+                android:id="@+id/acDiemKhoiHanh"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -43,8 +44,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Điểm đến: " />
-            <EditText
-                android:id="@+id/editDiemDen"
+            <com.example.teamcht.Utils.InstantAutoComplete
+                android:id="@+id/acDiemDen"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -74,8 +75,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Số hành khách: " />
-            <EditText
-                android:id="@+id/editSoHanhKhach"
+            <com.example.teamcht.Utils.InstantAutoComplete
+                android:id="@+id/acSoHanhKhach"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -86,8 +87,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Giá vé/người: " />
-            <EditText
-                android:id="@+id/editGiaVe"
+            <com.example.teamcht.Utils.InstantAutoComplete
+                android:id="@+id/acGiaVe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

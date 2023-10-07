@@ -19,25 +19,25 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tài khoản" />
+                android:text="Tài khoản: " />
             <EditText
                 android:id="@+id/editTaiKhoan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:inputType="textCapWords" />
         </TableRow>
         <TableRow android:layout_marginVertical="@dimen/itemMargin">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mật khẩu" />
+                android:text="Mật khẩu: " />
             <EditText
                 android:id="@+id/editMatKhau"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:inputType="text" />
         </TableRow>
     </TableLayout>
-
-
 </LinearLayout>

@@ -6,12 +6,14 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -53,7 +55,7 @@ public class QLChuyenDi extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
         swipeRefreshLayout = findViewById(R.id.swipeLayout);
 
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
@@ -131,7 +133,6 @@ public class QLChuyenDi extends AppCompatActivity {
                         chuyenDi.getNgayDi().toLowerCase().contains(strSearch) ||
                         chuyenDi.getGiaVe().toLowerCase().contains(strSearch)) {
                     listResult.add(chuyenDi);
-                    break;
                 }
             }
             return listResult;
@@ -139,14 +140,16 @@ public class QLChuyenDi extends AppCompatActivity {
     }
 
     private void showChuyenDiDialog(ChuyenDi chuyendi, int position) {
-        LayoutInflater li = LayoutInflater.from(getApplicationContext());
+        LayoutInflater li = LayoutInflater.from(QLChuyenDi.this);
         View promptsView = li.inflate(R.layout.vanchuyen_chuyendi_dialog, null);
+
         final EditText editPhuongTien = promptsView.findViewById(R.id.editPhuongTien);
         final EditText editDiemKhoiHanh = promptsView.findViewById(R.id.editDiemKhoiHanh);
         final EditText editDiemDen = promptsView.findViewById(R.id.editDiemDen);
         final EditText editNgayDi = promptsView.findViewById(R.id.editNgayDi);
         final EditText editSoHanhKhach = promptsView.findViewById(R.id.editSoHanhKhach);
         final EditText editGiaVe = promptsView.findViewById(R.id.editGiaVe);
+
         promptsView.findViewById(R.id.btnDatePicker).setOnClickListener(view -> {
             Calendar c = Calendar.getInstance();
             int year = c.get(Calendar.YEAR),
@@ -158,6 +161,12 @@ public class QLChuyenDi extends AppCompatActivity {
             datePickerDialog.show();
         });
 
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setView(promptsView);
+        alertDialogBuilder.setCancelable(true)
+                .setPositiveButton("Lưu", null)
+                .setNeutralButton("Huỷ bỏ", ((dialogInterface, i) -> dialogInterface.cancel()));
+
         if (chuyendi != null) {
             editPhuongTien.setText(chuyendi.getPhuongTien());
             editDiemKhoiHanh.setText(chuyendi.getDiemKhoiHanh());
@@ -165,45 +174,50 @@ public class QLChuyenDi extends AppCompatActivity {
             editNgayDi.setText(chuyendi.getNgayDi());
             editSoHanhKhach.setText(chuyendi.getSoHanhKhach());
             editGiaVe.setText(chuyendi.getGiaVe());
-        }
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-        alertDialogBuilder.setView(promptsView);
 
-        alertDialogBuilder
-                .setCancelable(true)
-                .setPositiveButton("Lưu",
-                        (dialog, id) -> {
-                            if (chuyendi == null) {
-                                create(
-                                        editPhuongTien.getText().toString(),
-                                        editDiemKhoiHanh.getText().toString(),
-                                        editDiemDen.getText().toString(),
-                                        editNgayDi.getText().toString(),
-                                        editSoHanhKhach.getText().toString(),
-                                        editGiaVe.getText().toString()
-                                );
-                            } else {
-                                update(
-                                        position, chuyendi.getId(),
-                                        editPhuongTien.getText().toString(),
-                                        editDiemKhoiHanh.getText().toString(),
-                                        editDiemDen.getText().toString(),
-                                        editNgayDi.getText().toString(),
-                                        editSoHanhKhach.getText().toString(),
-                                        editGiaVe.getText().toString()
-                                );
-                            }
-                        })
-                .setNegativeButton("Xoá",
-                        (dialog, id) -> {
+            alertDialogBuilder.setNegativeButton("Xoá", (dialog, id) -> {
+                new AlertDialog.Builder(this)
+                        .setIcon(R.drawable.ic_delete)
+                        .setTitle("Xác nhận xoá")
+                        .setMessage("Bạn có xác nhận muốn xoá chuyến đi từ " + chuyendi.getDiemKhoiHanh() + " đến " + chuyendi.getDiemDen() + " ?")
+                        .setPositiveButton("Có", (d, which) -> {
                             delete(position, chuyendi.getId());
                         })
-                .setNeutralButton("Huỷ bỏ", ((dialogInterface, i) -> dialogInterface.cancel()));
+                        .setNegativeButton("Không", null)
+                        .show();
+            });
+        }
 
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.setCancelable(false);
         alertDialog.setCanceledOnTouchOutside(true);
         alertDialog.show();
+        alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(view -> {
+            //Todo check null
+            //Todo check duplicate
+            if (chuyendi == null) {
+                create(
+                        editPhuongTien.getText().toString(),
+                        editDiemKhoiHanh.getText().toString(),
+                        editDiemDen.getText().toString(),
+                        editNgayDi.getText().toString(),
+                        editSoHanhKhach.getText().toString(),
+                        editGiaVe.getText().toString()
+                );
+                alertDialog.dismiss();
+            } else {
+                update(
+                        position, chuyendi.getId(),
+                        editPhuongTien.getText().toString(),
+                        editDiemKhoiHanh.getText().toString(),
+                        editDiemDen.getText().toString(),
+                        editNgayDi.getText().toString(),
+                        editSoHanhKhach.getText().toString(),
+                        editGiaVe.getText().toString()
+                );
+                alertDialog.dismiss();
+            }
+        });
     }
 
     private void create(String phuongtien, String diemkhoihanh, String diemden, String ngaydi, String sohanhkhah, String giave) {

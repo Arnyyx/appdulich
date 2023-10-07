@@ -38,10 +38,10 @@ public class DangNhap extends AppCompatActivity {
 
             if (strName.matches("")) {
                 name.requestFocus();
-                name.setError("Hãy nhập tên đăng nhập");
+                name.setError(getString(R.string.TaiKhoanNull));
             } else if (strPass.matches("")) {
                 pass.requestFocus();
-                pass.setError("Hãy nhập mật khẩu");
+                pass.setError(getString(R.string.MatKhauNull));
             } else {
                 int i = 0;
                 for (TaiKhoan a : taiKhoanList) {

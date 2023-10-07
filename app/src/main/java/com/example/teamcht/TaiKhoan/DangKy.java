@@ -45,7 +45,7 @@ public class DangKy extends AppCompatActivity {
             if (i == taiKhoanList.size()) {
                 if (strName.matches("")) {
                     name.requestFocus();
-                    name.setError("Hãy nhập tên đăng nhập");
+                    name.setError("Hãy nhập tên tài khoản");
                 } else if (strPass.matches("")) {
                     pass.requestFocus();
                     pass.setError("Hãy nhập mật khẩu");

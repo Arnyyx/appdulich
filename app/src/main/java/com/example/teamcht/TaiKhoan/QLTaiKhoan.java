@@ -47,6 +47,7 @@ import java.util.List;
 public class QLTaiKhoan extends AppCompatActivity {
     DBTaiKhoan db;
     List<TaiKhoan> taiKhoanList;
+    ;
     TaiKhoanAdapter taiKhoanAdapter;
     RecyclerView recyclerView;
     SwipeRefreshLayout swipeRefreshLayout;
@@ -57,13 +58,14 @@ public class QLTaiKhoan extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.taikhoan_main);
 
+
         recyclerView = findViewById(R.id.recyclerView);
         swipeRefreshLayout = findViewById(R.id.swipeLayout);
 
         db = new DBTaiKhoan(this);
         taiKhoanList = db.getAll();
         taiKhoanAdapter = new TaiKhoanAdapter(this, taiKhoanList);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
@@ -110,29 +112,31 @@ public class QLTaiKhoan extends AppCompatActivity {
 
         findViewById(R.id.btnAdd).setOnClickListener(view -> showTaiKhoanDialog(null, -1));
 
-        findViewById(R.id.btnDangXuat).setOnClickListener(view -> new AlertDialog.Builder(this)
-                .setIcon(R.drawable.ic_logout)
-                .setTitle("Đăng xuất")
-                .setMessage("Bạn có muốn đăng xuất?")
-                .setPositiveButton("Có", (dialog, which) -> {
-                    DBTaiKhoan db = new DBTaiKhoan(QLTaiKhoan.this);
-                    List<TaiKhoan> taiKhoanList = db.getAll();
-                    int i = 0;
-                    for (TaiKhoan a : taiKhoanList) {
-                        if (a.getStatus().matches("1")) {
-                            db.update(a.getId(), a.getName(), a.getPassword(), "");
-                            startActivity(new Intent(QLTaiKhoan.this, Splash.class));
-                            finish();
-                            break;
+        findViewById(R.id.btnDangXuat).setOnClickListener(view -> {
+            new AlertDialog.Builder(this)
+                    .setIcon(R.drawable.ic_logout)
+                    .setTitle("Đăng xuất")
+                    .setMessage("Bạn có muốn đăng xuất?")
+                    .setPositiveButton("Có", (dialog, which) -> {
+                        DBTaiKhoan db = new DBTaiKhoan(QLTaiKhoan.this);
+                        List<TaiKhoan> taiKhoanList = db.getAll();
+                        int i = 0;
+                        for (TaiKhoan a : taiKhoanList) {
+                            if (a.getStatus().matches("1")) {
+                                db.update(a.getId(), a.getName(), a.getPassword(), "");
+                                startActivity(new Intent(QLTaiKhoan.this, Splash.class));
+                                finish();
+                                break;
+                            }
+                            i++;
                         }
-                        i++;
-                    }
-                    if (i == taiKhoanList.size()) {
-                        Toast.makeText(QLTaiKhoan.this, "Lỗi đăng xuất", Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .setNegativeButton("Không", null)
-                .show());
+                        if (i == taiKhoanList.size()) {
+                            Toast.makeText(QLTaiKhoan.this, "Lỗi đăng xuất", Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .setNegativeButton("Không", null)
+                    .show();
+        });
 
         swipeRefreshLayout.setOnRefreshListener(() -> {
             editSearch.setText("");
@@ -155,15 +159,15 @@ public class QLTaiKhoan extends AppCompatActivity {
             if (itemId == R.id.account) {
                 return true;
             } else if (itemId == R.id.place) {
-                startActivity(new Intent(getApplicationContext(), loaiphong.class));
+                startActivity(new Intent(this, loaiphong.class));
                 overridePendingTransition(0, 0);
                 return true;
             } else if (itemId == R.id.entertainment) {
-                startActivity(new Intent(getApplicationContext(), HoatDongGiaiTri.class));
+                startActivity(new Intent(this, HoatDongGiaiTri.class));
                 overridePendingTransition(0, 0);
                 return true;
             } else if (itemId == R.id.transport) {
-                startActivity(new Intent(getApplicationContext(), VanChuyen.class));
+                startActivity(new Intent(this, VanChuyen.class));
                 overridePendingTransition(0, 0);
                 return true;
             }
@@ -190,38 +194,74 @@ public class QLTaiKhoan extends AppCompatActivity {
     }
 
     private void showTaiKhoanDialog(TaiKhoan taiKhoan, int position) {
-        LayoutInflater li = LayoutInflater.from(getApplicationContext());
+        LayoutInflater li = LayoutInflater.from(this);
         View promptsView = li.inflate(R.layout.taikhoan_dialog, null);
         final EditText editTaiKhoan = promptsView.findViewById(R.id.editTaiKhoan);
         final EditText editMatKhau = promptsView.findViewById(R.id.editMatKhau);
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setView(promptsView);
+        alertDialogBuilder.setCancelable(true)
+                .setPositiveButton("Lưu", null)
+                .setNeutralButton("Huỷ bỏ", (dialog, id) -> dialog.cancel());
+
         if (taiKhoan != null) {
             editTaiKhoan.setText(taiKhoan.getName());
             editMatKhau.setText(taiKhoan.getPassword());
-        }
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-        alertDialogBuilder.setView(promptsView);
-        alertDialogBuilder
-                .setCancelable(true)
-                .setPositiveButton("Lưu",
-                        (dialog, id) -> {
-                            if (taiKhoan == null) {
-                                create(editTaiKhoan.getText().toString(), editMatKhau.getText().toString());
-                            } else {
-                                update(position, taiKhoan.getId(), editTaiKhoan.getText().toString(), editMatKhau.getText().toString(), taiKhoan.getStatus());
-                            }
-                        })
-                .setNegativeButton("Xoá",
-                        (dialog, id) -> {
+            alertDialogBuilder.setNegativeButton("Xoá", (dialog, id) -> {
+                new AlertDialog.Builder(this)
+                        .setIcon(R.drawable.ic_delete)
+                        .setTitle("Xác nhận xoá")
+                        .setMessage("Bạn có xác nhận muốn xoá tài khoản " + taiKhoan.getName() + " ?")
+                        .setPositiveButton("Có", (d, which) -> {
                             if (taiKhoan.getStatus().matches("1")) {
                                 Toast.makeText(this, "Không thể xoá tài khoản đang đăng nhập", Toast.LENGTH_SHORT).show();
-                            } else delete(position, taiKhoan.getId());
+                            } else {
+                                delete(position, taiKhoan.getId());
+                                Toast.makeText(this, "Đã xoá tài khoản " + taiKhoan.getName(), Toast.LENGTH_SHORT).show();
+                            }
                         })
-                .setNeutralButton("Huỷ bỏ",
-                        (dialog, id) -> dialog.cancel());
+                        .setNegativeButton("Không", null)
+                        .show();
+            });
+        }
+
         AlertDialog alertDialog = alertDialogBuilder.create();
-        alertDialog.setCancelable(false);
         alertDialog.setCanceledOnTouchOutside(true);
         alertDialog.show();
+        alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(view -> {
+            String strTaiKhoan = editTaiKhoan.getText().toString(),
+                    strMatKhau = editMatKhau.getText().toString();
+            if (strTaiKhoan.matches("")) {
+                editTaiKhoan.requestFocus();
+                editTaiKhoan.setError(getString(R.string.TaiKhoanNull));
+            } else if (strMatKhau.matches("")) {
+                editMatKhau.requestFocus();
+                editMatKhau.setError(getString(R.string.MatKhauNull));
+            } else if (checkTaiKhoanDuplicate(taiKhoanList, strTaiKhoan, taiKhoan)) {
+                editTaiKhoan.setError(getString(R.string.TaiKhoanExists));
+                editTaiKhoan.requestFocus();
+            } else if (taiKhoan == null) {
+                create(editTaiKhoan.getText().toString(), editMatKhau.getText().toString());
+                alertDialog.dismiss();
+            } else {
+                update(position, taiKhoan.getId(), editTaiKhoan.getText().toString(), editMatKhau.getText().toString(), taiKhoan.getStatus());
+                alertDialog.dismiss();
+            }
+        });
+    }
+
+    private boolean checkTaiKhoanDuplicate(List<TaiKhoan> taiKhoanList, String strTaiKhoan, TaiKhoan taiKhoan) {
+        List<TaiKhoan> taiKhoanListCheck = new ArrayList<>(taiKhoanList);
+        if (taiKhoan != null) {
+            taiKhoanListCheck.remove(taiKhoan);
+        }
+        for (TaiKhoan a : taiKhoanListCheck) {
+            if (a.getName().matches(strTaiKhoan)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void create(String name, String pass) {

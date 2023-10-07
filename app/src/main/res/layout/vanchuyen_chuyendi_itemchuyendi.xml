@@ -119,8 +119,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="@dimen/itemMargin"
-                android:layout_marginStart="150dp"
-                android:text="Giá vé:"
+                android:layout_marginStart="80dp"
+                android:text="Giá vé/người:"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
             <TextView
