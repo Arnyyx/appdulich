@@ -165,7 +165,7 @@ public class QLChuyenDi extends AppCompatActivity {
         alertDialogBuilder.setView(promptsView);
         alertDialogBuilder.setCancelable(true)
                 .setPositiveButton("Lưu", null)
-                .setNeutralButton("Huỷ bỏ", ((dialogInterface, i) -> dialogInterface.cancel()));
+                .setNeutralButton("Huỷ", ((dialogInterface, i) -> dialogInterface.cancel()));
 
         if (chuyendi != null) {
             editPhuongTien.setText(chuyendi.getPhuongTien());
@@ -184,6 +184,7 @@ public class QLChuyenDi extends AppCompatActivity {
                             delete(position, chuyendi.getId());
                         })
                         .setNegativeButton("Không", null)
+                        .setNeutralButton("Huỷ", null)
                         .show();
             });
         }

@@ -5,19 +5,41 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="@dimen/padding">
-    <Button
-        android:id="@+id/btnQLChuyenDi"
-        android:layout_width="wrap_content"
+
+    <TextView
+        android:id="@+id/header"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Quản lý chuyến đi" />
-    <Button
-        android:id="@+id/btnMuaVe"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btnQLChuyenDi"
         android:layout_centerHorizontal="true"
-        android:text="Mua vé" />
+        android:layout_marginTop="@dimen/margin"
+        android:gravity="center_horizontal"
+        android:text="VẬN CHUYỂN"
+        android:textSize="@dimen/header" />
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+        <TableRow>
+            <Button
+                android:id="@+id/btnQLChuyenDi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_plane"
+                android:padding="@dimen/padding"
+                android:text="Quản lý chuyến đi" />
+        </TableRow>
+        <TableRow>
+            <Button
+                android:id="@+id/btnMuaVe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:drawableLeft="@drawable/ic_plane_ticket"
+                android:padding="@dimen/padding"
+                android:text="Mua vé" />
+        </TableRow>
+    </TableLayout>
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"

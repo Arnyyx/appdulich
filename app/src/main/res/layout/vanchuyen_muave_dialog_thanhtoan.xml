@@ -11,15 +11,15 @@
         android:layout_gravity="center_horizontal">
         <ImageView
             android:src="@drawable/ic_plane_ticket"
-            android:layout_marginHorizontal="@dimen/itemMargin"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/itemMargin" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginHorizontal="@dimen/itemMargin"
-            android:text="Thông tin chuyến đi"
+            android:text="Thông tin vé"
             android:textSize="@dimen/header" />
     </LinearLayout>
 
@@ -36,6 +36,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:enabled="false"
                 android:inputType="textCapWords" />
         </TableRow>
         <TableRow android:layout_marginVertical="@dimen/itemMargin">
@@ -48,6 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:enabled="false"
                 android:inputType="textCapWords" />
         </TableRow>
         <TableRow android:layout_marginVertical="@dimen/itemMargin">
@@ -60,6 +62,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:enabled="false"
                 android:inputType="textCapWords" />
         </TableRow>
         <TableRow android:layout_marginVertical="@dimen/itemMargin">
@@ -73,13 +76,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:enabled="false" />
-            <Button
-                android:id="@+id/btnDatePicker"
-                style="?android:spinnerStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:gravity="center" />
+
         </TableRow>
         <TableRow android:layout_marginVertical="@dimen/itemMargin">
             <TextView
@@ -91,6 +88,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:hint="Hãy nhập số hành khách"
                 android:inputType="numberSigned" />
         </TableRow>
         <TableRow android:layout_marginVertical="@dimen/itemMargin">
@@ -103,7 +101,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:enabled="false"
                 android:inputType="numberSigned" />
+        </TableRow>
+        <TableRow android:layout_marginVertical="@dimen/itemMargin">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tổng thanh toán: " />
+            <EditText
+                android:id="@+id/editTongThanhToan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:focusable="false"
+                android:inputType="text" />
         </TableRow>
     </TableLayout>
 </LinearLayout>

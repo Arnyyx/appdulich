@@ -3,22 +3,17 @@ package com.example.teamcht.TaiKhoan;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -27,19 +22,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.example.teamcht.Adapters.ChuyenDiAdapter;
 import com.example.teamcht.Adapters.TaiKhoanAdapter;
 import com.example.teamcht.ChoO.loaiphong;
 import com.example.teamcht.Database.DBTaiKhoan;
 import com.example.teamcht.HoatDongGiaiTri.HoatDongGiaiTri;
-import com.example.teamcht.Models.ChuyenDi;
 import com.example.teamcht.Models.TaiKhoan;
 import com.example.teamcht.R;
 import com.example.teamcht.Utils.RecyclerTouchListener;
-import com.example.teamcht.VanChuyen.QLChuyenDi;
 import com.example.teamcht.VanChuyen.VanChuyen;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +38,6 @@ import java.util.List;
 public class QLTaiKhoan extends AppCompatActivity {
     DBTaiKhoan db;
     List<TaiKhoan> taiKhoanList;
-    ;
     TaiKhoanAdapter taiKhoanAdapter;
     RecyclerView recyclerView;
     SwipeRefreshLayout swipeRefreshLayout;
@@ -56,7 +46,7 @@ public class QLTaiKhoan extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.taikhoan_main);
+        setContentView(R.layout.taikhoan);
 
 
         recyclerView = findViewById(R.id.recyclerView);
@@ -144,6 +134,10 @@ public class QLTaiKhoan extends AppCompatActivity {
             //Hide keyboard
             InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(editSearch.getWindowToken(), 0);
+
+            db = new DBTaiKhoan(this);
+            taiKhoanList = db.getAll();
+            taiKhoanAdapter = new TaiKhoanAdapter(this, taiKhoanList);
             recyclerView.setAdapter(taiKhoanAdapter);
             swipeRefreshLayout.setRefreshing(false);
         });
@@ -186,7 +180,6 @@ public class QLTaiKhoan extends AppCompatActivity {
                         taikhoan.getPassword().toLowerCase().contains(strSearch) ||
                         taikhoan.getStatus().toLowerCase().contains(strSearch)) {
                     listResult.add(taikhoan);
-                    break;
                 }
             }
             return listResult;
@@ -203,7 +196,7 @@ public class QLTaiKhoan extends AppCompatActivity {
         alertDialogBuilder.setView(promptsView);
         alertDialogBuilder.setCancelable(true)
                 .setPositiveButton("Lưu", null)
-                .setNeutralButton("Huỷ bỏ", (dialog, id) -> dialog.cancel());
+                .setNeutralButton("Huỷ", (dialog, id) -> dialog.cancel());
 
         if (taiKhoan != null) {
             editTaiKhoan.setText(taiKhoan.getName());
@@ -222,6 +215,7 @@ public class QLTaiKhoan extends AppCompatActivity {
                             }
                         })
                         .setNegativeButton("Không", null)
+                        .setNeutralButton("Huỷ", null)
                         .show();
             });
         }
