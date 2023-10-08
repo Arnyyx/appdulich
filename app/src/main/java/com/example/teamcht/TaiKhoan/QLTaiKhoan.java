@@ -24,9 +24,8 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.teamcht.Adapters.TaiKhoanAdapter;
 import com.example.teamcht.ChoO.ChoO;
-import com.example.teamcht.ChoO.loaiphong;
 import com.example.teamcht.Database.DBTaiKhoan;
-import com.example.teamcht.HoatDongGiaiTri.HoatDongGiaiTri;
+import com.example.teamcht.HoatDongGiaiTri.DanhSachDiaDiem;
 import com.example.teamcht.Models.TaiKhoan;
 import com.example.teamcht.R;
 import com.example.teamcht.Utils.RecyclerTouchListener;
@@ -159,7 +158,7 @@ public class QLTaiKhoan extends AppCompatActivity {
                 finish();
                 return true;
             } else if (itemId == R.id.entertainment) {
-                startActivity(new Intent(this, HoatDongGiaiTri.class));
+                startActivity(new Intent(this, DanhSachDiaDiem.class));
                 overridePendingTransition(0, 0);
                 finish();
                 return true;

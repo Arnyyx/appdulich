@@ -7,8 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.teamcht.ChoO.ChoO;
-import com.example.teamcht.ChoO.loaiphong;
-import com.example.teamcht.HoatDongGiaiTri.HoatDongGiaiTri;
+import com.example.teamcht.HoatDongGiaiTri.DanhSachDiaDiem;
 import com.example.teamcht.R;
 import com.example.teamcht.TaiKhoan.QLTaiKhoan;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -42,7 +41,7 @@ public class VanChuyen extends AppCompatActivity {
                 finish();
                 return true;
             } else if (itemId == R.id.entertainment) {
-                startActivity(new Intent(this, HoatDongGiaiTri.class));
+                startActivity(new Intent(this, DanhSachDiaDiem.class));
                 overridePendingTransition(0, 0);
                 finish();
                 return true;
