@@ -34,6 +34,7 @@ public class aaadanhsachphong extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cuongdanhsachphong);
+        findViewById(R.id.btnBack).setOnClickListener(view -> onBackPressed());
         dbHelper = new DatabaseHelper(this);
         danhSachPhongListView = findViewById(R.id.danhSachPhongListView);
         Intent intent = getIntent();

@@ -1,41 +1,30 @@
 package com.example.teamcht.ChoO;
 
 import android.app.DatePickerDialog;
-import android.content.ContentValues;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.teamcht.R;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
 public class BookingActivity extends AppCompatActivity {
 
-    private EditText editTextName,  editTextNumberOfGuests;
-    private TextView  editTextCheckInDate, editTextCheckOutDate, editTextBookingDate, editTextRoomType,  editTextRoomNumber, editTextPriceall;
+    private EditText editTextName, editTextNumberOfGuests;
+    private TextView editTextCheckInDate, editTextCheckOutDate, editTextBookingDate, editTextRoomType, editTextRoomNumber, editTextPriceall;
     private Button buttonSubmit;
     private DBHPbooking dbHelper;
     private int dolechngay;
@@ -44,6 +33,7 @@ public class BookingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.xacnhanbooking);
+        findViewById(R.id.btnBack).setOnClickListener(view -> onBackPressed());
         dbHelper = new DBHPbooking(this);
 
         Intent intent = getIntent();
@@ -60,19 +50,18 @@ public class BookingActivity extends AppCompatActivity {
         editTextRoomNumber = findViewById(R.id.editTextRoomNumber);
         editTextPriceall = findViewById(R.id.priceTextView);
         buttonSubmit = findViewById(R.id.buttonSubmit);
-        editTextRoomType.setText(" "+selectedLoaiPhong);
-        editTextRoomNumber.setText(" "+selectedRoomNumber);
+        editTextRoomType.setText(" " + selectedLoaiPhong);
+        editTextRoomNumber.setText(" " + selectedRoomNumber);
         Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH);
         int day = calendar.get(Calendar.DAY_OF_MONTH);
         String currentDate = day + "/" + (month + 1) + "/" + year;
-        editTextBookingDate.setText(" "+currentDate);
+        editTextBookingDate.setText(currentDate);
         TextView priceTextView = findViewById(R.id.priceTextView);
         double giaBanDau = priceall;
         double giaChoMoiNguoi = 5.00;
         priceTextView.setText("Tổng tiền cần trả: $" + giaBanDau);
-
 
 
         editTextCheckInDate.setOnClickListener(new View.OnClickListener() {
@@ -92,14 +81,11 @@ public class BookingActivity extends AppCompatActivity {
         });
 
 
-
-
         int soluong;
 
-        if(editTextNumberOfGuests.getText().toString().isEmpty()){
-            soluong=soluongnguoi;
-        }
-        else{
+        if (editTextNumberOfGuests.getText().toString().isEmpty()) {
+            soluong = soluongnguoi;
+        } else {
             soluong = Integer.parseInt(editTextNumberOfGuests.getText().toString());
 
         }
@@ -139,25 +125,24 @@ public class BookingActivity extends AppCompatActivity {
                     dolechngay = checkOutCalendar.get(Calendar.DAY_OF_YEAR) - checkInCalendar.get(Calendar.DAY_OF_YEAR);
                 }
                 String sl = editable.toString();
-                if(dolechngay==0){
-                    dolechngay=1;
+                if (dolechngay == 0) {
+                    dolechngay = 1;
                 }
                 if (sl.isEmpty()) {
-                    priceTextView.setText("Tổng tiền cần trả: $" + (giaBanDau*dolechngay));
+                    priceTextView.setText("Tổng tiền cần trả: $" + (giaBanDau * dolechngay));
                 } else {
                     int numberOfGuests;
-                    if(sl==""){
-                        numberOfGuests=soluongnguoi;
-                    }
-                    else {
+                    if (sl == "") {
+                        numberOfGuests = soluongnguoi;
+                    } else {
                         numberOfGuests = Integer.parseInt(sl);
                     }
                     if (numberOfGuests <= soluongnguoi) {
-                        priceTextView.setText("Tổng tiền cần trả: $" + (giaBanDau*dolechngay));
+                        priceTextView.setText("Tổng tiền cần trả: $" + (giaBanDau * dolechngay));
                     } else {
                         double giaTong;
                         if (numberOfGuests > soluongnguoi) {
-                            giaTong = (giaBanDau + ((numberOfGuests - soluongnguoi) * giaChoMoiNguoi))*dolechngay;
+                            giaTong = (giaBanDau + ((numberOfGuests - soluongnguoi) * giaChoMoiNguoi)) * dolechngay;
                         } else {
                             giaTong = giaBanDau;
                         }
@@ -219,8 +204,6 @@ public class BookingActivity extends AppCompatActivity {
     }
 
 
-
-
 //private void create(String name,String checkindate, String checkoutdate, String bookingdate, String roomtype,int soluong, String sophong, String gia ){
 //        dbHelper = new DBHPbooking(BookingActivity.this);
 //        long bookingId = dbHelper.addBooking(name, checkindate, checkoutdate, bookingdate,roomtype,soluong,sophong, gia);
@@ -239,7 +222,6 @@ public class BookingActivity extends AppCompatActivity {
 //}
 
 
-
     private void showDatePickerDialog(final TextView editText) {
         final Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
@@ -250,12 +232,13 @@ public class BookingActivity extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                         String selectedDate = dayOfMonth + "/" + (month + 1) + "/" + year;
-                        editText.setText(""+selectedDate);
+                        editText.setText("" + selectedDate);
                     }
                 }, year, month, day);
 
         datePickerDialog.show();
     }
+
     private void showDatePickerDialog1(final TextView editText) {
         final Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
@@ -266,13 +249,14 @@ public class BookingActivity extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                         String selectedDate = dayOfMonth + "/" + (month + 1) + "/" + year;
-                        editText.setText(""+selectedDate);
+                        editText.setText("" + selectedDate);
                     }
                 }, year, month, day);
 
         datePickerDialog.show();
 
     }
+
     private void clearFields() {
         editTextName.setText("");
         editTextCheckInDate.setText("");

@@ -1,82 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="@dimen/padding">
 
     <ImageView
-        android:id="@+id/roomImageView"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/anhcuong1"
-        />
+        android:src="@drawable/ic_back"
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start" />
 
     <TextView
         android:id="@+id/roomTypeTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/margin"
+        android:gravity="center"
         android:text="Phòng Đơn"
         android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_marginTop="16dp"/>
+        android:textStyle="bold" />
+    <ImageView
+        android:src="@drawable/anhcuong1"
+        android:id="@+id/roomImageView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop" />
 
     <TextView
         android:id="@+id/roomNameTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/margin"
+        android:gravity="center"
         android:text="Phòng 1"
-        android:textSize="20sp"
-        android:layout_marginTop="8dp"
-        android:textColor="@color/black" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/roomDescriptionTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Mô tả phòng: Lorem ipsum dolor sit amet, consectetur adipiscing elit."
         android:layout_marginTop="8dp"
-        android:textColor="@android:color/black"
+        android:text="Mô tả phòng: Lorem ipsum dolor sit amet, consectetur adipiscing elit."
         android:textSize="16sp" />
     <TextView
         android:id="@+id/soluongnguoitv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="2 người/phòng"
-        android:textSize="18sp"
         android:layout_marginTop="8dp"
-        android:textColor="@android:color/black"
+        android:text="2 người/phòng"
+        android:textSize="18sp" />
 
-        />
     <TextView
         android:id="@+id/diadiemtv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Địa điểm: Hà Nội"
-        android:textSize="18sp"
         android:layout_marginTop="8dp"
-        android:textColor="@android:color/black"
+        android:text="Địa điểm: Hà Nội"
+        android:textSize="18sp" />
 
-        />
     <TextView
         android:id="@+id/roomPriceTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Giá: $100/đêm"
-        android:textSize="18sp"
         android:layout_marginTop="8dp"
-        android:textColor="@color/purple_500" />
+        android:text="Giá: $100/đêm"
+        android:textColor="@color/red"
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/bookNowButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Đặt Phòng"
         android:layout_marginTop="16dp"
-        android:background="@color/teal_700"
-        android:textColor="@android:color/white"
+        android:text="Đặt Phòng"
         android:textSize="18sp" />
-
 </LinearLayout>

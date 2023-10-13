@@ -26,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_room"
                 android:padding="@dimen/padding"
-                android:text="ĐĂT PHÒNG" />
+                android:text="ĐẶT PHÒNG" />
         </TableRow>
         <TableRow>
             <Button

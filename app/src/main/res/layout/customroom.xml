@@ -2,59 +2,64 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="200dp"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:padding="@dimen/itemMargin">
 
     <ImageView
+        android:src="@drawable/anhcuong1"
         android:id="@+id/imageView"
         android:layout_width="204dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:layout_margin="0dp"
-        android:paddingTop="12dp"
-        android:paddingBottom="12dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/anhcuong1" />
+        android:scaleType="centerCrop" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="@dimen/itemMargin"
         android:orientation="vertical"
-        android:paddingTop="12dp"
         android:paddingBottom="12dp">
 
         <TextView
             android:id="@+id/roomNumberTextView"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="Phòng 1"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"
+            android:textSize="@dimen/header"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/descriptionTextView"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/itemMargin"
             android:text="Mô tả phòng A1"
-            android:textColor="@color/custom_color_15"
-            android:textSize="16sp" />
+            android:textSize="@dimen/content" />
 
         <TextView
             android:id="@+id/soluongTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="33dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="Phòng 2 người"
-            android:textColor="@color/custom_color_15"
-            android:textSize="16sp" />
+            android:textSize="@dimen/content" />
 
         <TextView
             android:id="@+id/diadiemTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="34dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="Địa điểm: Hà Nội"
-            android:textColor="@color/custom_color_15"
             android:textSize="16sp" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/itemMargin"
+            android:text="Giá phòng: "
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/priceTextView"

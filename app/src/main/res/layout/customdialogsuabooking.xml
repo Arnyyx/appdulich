@@ -3,94 +3,89 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="@dimen/padding">
 
-    <LinearLayout
+
+    <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tên của bạn"
-            android:layout_gravity="center_vertical" />
-        <EditText
-            android:id="@+id/editTextName1"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:hint="Họ và tên"
-            android:focusable="false"
-            android:clickable="true" />
+        android:layout_height="wrap_content">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="Tên của bạn" />
+            <EditText
+                android:id="@+id/editTextName1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="false"
+                android:hint="Họ và tên" />
+        </TableRow>
 
 
-    </LinearLayout>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="Ngày đến:" />
+            <EditText
+                android:id="@+id/editTextCheckInDate1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="false"
+                android:hint="Ngày đến"
+                android:inputType="none" />
+        </TableRow>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ngày đến:"
-            android:layout_gravity="center_vertical" />
-        <EditText
-            android:id="@+id/editTextCheckInDate1"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:hint="Ngày đến"
-            android:inputType="none"
-            android:focusable="false"
-            android:clickable="true" />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="Ngày đi:" />
+            <EditText
+                android:id="@+id/editTextCheckOutDate1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="false"
+                android:hint="Ngày đi"
+                android:inputType="none" />
+        </TableRow>
 
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ngày đi:"
-            android:layout_gravity="center_vertical" />
-        <EditText
-            android:id="@+id/editTextCheckOutDate1"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:hint="Ngày đi"
-            android:inputType="none"
-            android:focusable="false"
-            android:clickable="true" />
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Số lượng người:"
-            android:layout_gravity="center_vertical" />
-        <EditText
-            android:id="@+id/editTextNumberOfGuests1"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="32dp"
-            android:hint="Số lượng người"
-            android:textSize="18sp"
-            android:inputType="none"
-            android:focusable="false"
-            android:clickable="true" />
-
-
-    </LinearLayout>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="Số lượng người:" />
+            <EditText
+                android:id="@+id/editTextNumberOfGuests1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="false"
+                android:hint="Số lượng người"
+                android:inputType="none"
+                android:textSize="18sp" />
+        </TableRow>
+    </TableLayout>
 
 </LinearLayout>

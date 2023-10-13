@@ -1,75 +1,176 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="@dimen/padding">
 
-    <TextView
+
+    <ImageView
+        android:src="@drawable/ic_back"
+        android:id="@+id/btnBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nhập thông tin đặt phòng"
-        android:textSize="24sp"
-        android:layout_gravity="center"
-        android:textStyle="bold"
-        android:layout_marginBottom="16dp"
-        android:textColor="@color/custom_color_1" />
+        android:layout_gravity="start" />
 
     <TextView
-        android:id="@+id/editTextRoomType"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:hint="Loại phòng"
-        android:textColor="@color/custom_color_2" />
+        android:gravity="center"
+        android:text="XÁC NHẬN ĐẶT PHÒNG"
+        android:textSize="@dimen/header" />
 
-    <TextView
-        android:id="@+id/editTextRoomNumber"
+    <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:hint="Số phòng"
-        android:textColor="@color/custom_color_3" />
+        android:layout_marginTop="@dimen/margin">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Loại phòng:"
+                android:textSize="22sp" />
+            <TextView
+                android:id="@+id/editTextRoomType"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="22sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Số phòng:"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/editTextRoomNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="22sp" />
+        </TableRow>
+    </TableLayout>
 
     <EditText
         android:id="@+id/editTextName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Tên khách hàng"
-        android:textColor="@color/custom_color_4" />
+        android:layout_marginTop="@dimen/margin"
+        android:ellipsize="end"
+        android:hint="Nhập tên khách hàng" />
 
-    <TextView
-        android:id="@+id/editTextbookingdate"
+
+    <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Ngày nhận phòng"
-        android:textColor="@color/custom_color_5"
-        android:textSize="18dp" />
+        android:layout_marginTop="@dimen/margin">
 
-    <TextView
-        android:id="@+id/editTextCheckInDate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Ngày đến"
-        android:textColor="@color/custom_color_6"
-        android:textSize="18dp" />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/editTextCheckOutDate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Ngày đi"
-        android:textColor="@color/custom_color_7"
-        android:textSize="18dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ngày nhận phòng: "
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/editTextbookingdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Chọn ngày nhận"
+                android:textSize="22sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ngày đến:"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/editTextCheckInDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:hint="Chọn ngày đến"
+                android:textSize="22sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ngày đi:"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/editTextCheckOutDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:hint="Chọn ngày đi"
+                android:textSize="22sp" />
+        </TableRow>
+    </TableLayout>
+
 
     <EditText
         android:id="@+id/editTextNumberOfGuests"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Số lượng người"
-        android:inputType="number"
-        android:textColor="@color/custom_color_8" />
+        android:layout_marginTop="@dimen/margin"
+        android:hint="Nhập số lượng người"
+        android:inputType="number" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nếu số người nhiều hơn số người quy định tính phí 5 USD/người"
+        android:textColor="#FF0505"
+        android:textStyle="italic" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="(Tiền sẽ được tính khi nhập số lượng người)"
+        android:textColor="#FF0505"
+        android:textStyle="italic" />
 
     <TextView
         android:id="@+id/priceTextView"
@@ -77,18 +178,16 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="Tổng tiền cần trả: "
-        android:textColor="@color/custom_color_1"
-        android:textSize="22sp"
+        android:textColor="@color/red"
+        android:textSize="24sp"
         android:textStyle="bold" />
 
     <Button
         android:id="@+id/buttonSubmit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Xác nhận đặt phòng"
-        android:layout_marginTop="16dp"
-        android:background="@color/custom_color_9"
-        android:textColor="@android:color/white"
-        android:textSize="18sp" />
+        android:layout_marginTop="@dimen/margin"
+        android:text="Xác nhận đặt phòng" />
+    <!-- Nút Xác nhận đặt phòng -->
 
 </LinearLayout>

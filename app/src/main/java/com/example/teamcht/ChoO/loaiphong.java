@@ -1,19 +1,13 @@
 package com.example.teamcht.ChoO;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.teamcht.R;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class loaiphong extends AppCompatActivity {
     private Button giaDinhButton;
@@ -28,6 +22,7 @@ public class loaiphong extends AppCompatActivity {
         giaDinhButton = findViewById(R.id.roomgiadinh);
         donButton = findViewById(R.id.roomdon);
         suiteButton = findViewById(R.id.roomsuite);
+        findViewById(R.id.btnBack).setOnClickListener(view -> onBackPressed());
 
         giaDinhButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,7 +50,8 @@ public class loaiphong extends AppCompatActivity {
             }
         });
     }
-    private void start(String selectedLoaiPhong){
+
+    private void start(String selectedLoaiPhong) {
         Intent intent = new Intent(loaiphong.this, aaadanhsachphong.class);
         intent.putExtra("selectedLoaiPhong", selectedLoaiPhong);
         startActivity(intent);

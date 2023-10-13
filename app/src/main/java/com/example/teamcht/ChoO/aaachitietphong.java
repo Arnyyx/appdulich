@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,6 +18,7 @@ public class aaachitietphong extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cuongbooking);
+        findViewById(R.id.btnBack).setOnClickListener(view -> onBackPressed());
         Intent intent = getIntent();
         String selectedLoaiPhong = intent.getStringExtra("selectedLoaiPhong");
         String selectedRoomNumber = intent.getStringExtra("selectedPhong");
@@ -38,15 +38,15 @@ public class aaachitietphong extends AppCompatActivity {
         roomTypeTextView.setText(selectedLoaiPhong);
         roomDescriptionTextView.setText(selectedRoom.getDescription());
         roomPriceTextView.setText("Giá: $" + selectedRoom.getPrice() + "/đêm");
-        soluongnguoi.setText( selectedRoom.getSonguoitrongphong()+ " người/phòng");
-        diadiem.setText( "Địa điểm: "+selectedRoom.getDiadiem());
-        double price=selectedRoom.getPrice();
+        soluongnguoi.setText(selectedRoom.getSonguoitrongphong() + " người/phòng");
+        diadiem.setText("Địa điểm: " + selectedRoom.getDiadiem());
+        double price = selectedRoom.getPrice();
         Button bookNowButton = findViewById(R.id.bookNowButton);
 
         bookNowButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(aaachitietphong.this, BookingActivity.class);
+                Intent intent = new Intent(aaachitietphong.this, BookingActivity.class);
                 intent.putExtra("selectedLoaiPhong", selectedLoaiPhong);
                 intent.putExtra("selectedPhong", selectedRoomNumber);
                 intent.putExtra("priceall", price);

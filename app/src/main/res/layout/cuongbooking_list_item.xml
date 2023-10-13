@@ -1,83 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="16dp">
-    <TextView
-        android:id="@+id/textViewidBooking"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Mã đặt phòng: 1"
-        android:textSize="16sp" />
-    <TextView
-        android:id="@+id/textViewName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tên: John Doe"
-        android:textSize="16sp" />
-    <TextView
-        android:id="@+id/textViewbookingdate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ngày đặt: 01/01/2023"
-        android:textSize="16sp"/>
-    <TextView
-        android:id="@+id/textViewCheckInDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ngày đến: 01/01/2023"
-        android:textSize="16sp"/>
+    android:padding="@dimen/padding">
 
-    <TextView
-        android:id="@+id/textViewCheckOutDate"
-        android:layout_width="wrap_content"
+    <TableLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ngày đi: 01/02/2023"
-        android:textSize="16sp"/>
+        android:layout_marginTop="@dimen/margin">
 
-    <TextView
-        android:id="@+id/textViewRoomType"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Loại phòng: Phòng đôi"
-        android:textSize="16sp"/>
-    <TextView
-        android:id="@+id/textViewRoomNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Phòng số: 1"
-        android:textSize="16sp"/>
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mã đặt phòng: "
+                android:textSize="16sp" />
+            <TextView
+                android:id="@+id/textViewidBooking"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Mã đặt phòng: 1"
+                android:textSize="16sp" />
+        </TableRow>
 
-    <TextView
-        android:id="@+id/textViewNumberOfGuests"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Số lượng người: 2"
-        android:textSize="16sp"/>
-    <TextView
-        android:id="@+id/priceTextView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Số lượng người: 2"
-        android:textSize="16sp"/>
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tên: "
+                android:textSize="16sp" />
+            <TextView
+                android:id="@+id/textViewName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Tên: John Doe"
+                android:textSize="16sp" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ngày đặt: "
+                android:textSize="16sp" />
+            <TextView
+                android:id="@+id/textViewbookingdate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Ngày đặt: 01/01/2023"
+                android:textSize="16sp" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ngày đến: "
+                android:textSize="16sp" />
+            <TextView
+                android:id="@+id/textViewCheckInDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Ngày đến: 01/01/2023"
+                android:textSize="16sp" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ngày đi: "
+                android:textSize="16sp" />
+            <TextView
+                android:id="@+id/textViewCheckOutDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Ngày đi: 01/02/2023"
+                android:textSize="16sp" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Loại phòng: "
+                android:textSize="16sp" />
+            <TextView
+                android:id="@+id/textViewRoomType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Loại phòng: Phòng đôi"
+                android:textSize="16sp" />
+        </TableRow>
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phòng số: "
+                android:textSize="16sp" />
+            <TextView
+                android:id="@+id/textViewRoomNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Phòng số: 1"
+                android:textSize="16sp" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Số lượng người: "
+                android:textSize="16sp" />
+            <TextView
+                android:id="@+id/textViewNumberOfGuests"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Số lượng người: 2"
+                android:textSize="16sp" />
+        </TableRow>
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Số lượng người: "
+                android:textSize="16sp" />
+            <TextView
+                android:id="@+id/priceTextView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Số lượng người: 2"
+                android:textSize="16sp" />
+        </TableRow>
+    </TableLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingVertical="@dimen/padding">
 
         <Button
             android:id="@+id/huydatphong"
-            android:layout_width="193dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="Hủy đặt phòng" />
 
         <Button
             android:id="@+id/suathongtinbooking"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/itemMargin"
             android:layout_weight="1"
             android:text="Sửa thông tin" />
     </LinearLayout>
