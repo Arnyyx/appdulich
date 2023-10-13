@@ -132,12 +132,6 @@
                 android:textSize="16sp" />
         </TableRow>
         <TableRow>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Số lượng người: "
-                android:textSize="16sp" />
             <TextView
                 android:id="@+id/priceTextView1"
                 android:layout_width="wrap_content"
